@@ -1,0 +1,2334 @@
+<channel version="3.8.1">
+  <id>5a97bcdd-0c4b-4b20-aec9-2779b765ee17</id>
+  <nextMetaDataId>2</nextMetaDataId>
+  <name>Cytolink_XML-HL7</name>
+  <description></description>
+  <revision>9</revision>
+  <sourceConnector version="3.8.1">
+    <metaDataId>0</metaDataId>
+    <name>sourceConnector</name>
+    <properties class="com.mirth.connect.connectors.vm.VmReceiverProperties" version="3.8.1">
+      <pluginProperties/>
+      <sourceConnectorProperties version="3.8.1">
+        <responseVariable>None</responseVariable>
+        <respondAfterProcessing>true</respondAfterProcessing>
+        <processBatch>false</processBatch>
+        <firstResponse>false</firstResponse>
+        <processingThreads>1</processingThreads>
+        <resourceIds class="linked-hash-map">
+          <entry>
+            <string>Default Resource</string>
+            <string>[Default Resource]</string>
+          </entry>
+        </resourceIds>
+        <queueBufferSize>1000</queueBufferSize>
+      </sourceConnectorProperties>
+    </properties>
+    <transformer version="3.8.1">
+      <elements>
+        <com.mirth.connect.plugins.messagebuilder.MessageBuilderStep version="3.8.1">
+          <name>CASE_ID</name>
+          <sequenceNumber>0</sequenceNumber>
+          <enabled>true</enabled>
+          <messageSegment>tmp[&apos;ORC&apos;][&apos;ORC.2&apos;][&apos;ORC.2.1&apos;]</messageSegment>
+          <mapping>msg[&apos;CaseDetail&apos;][2][&apos;@text&apos;].toString()</mapping>
+          <defaultValue></defaultValue>
+          <replacements/>
+        </com.mirth.connect.plugins.messagebuilder.MessageBuilderStep>
+        <com.mirth.connect.plugins.messagebuilder.MessageBuilderStep version="3.8.1">
+          <name>BARCODE_ID</name>
+          <sequenceNumber>1</sequenceNumber>
+          <enabled>true</enabled>
+          <messageSegment>tmp[&apos;ORC&apos;][&apos;ORC.3&apos;][&apos;ORC.3.1&apos;]</messageSegment>
+          <mapping>msg[&apos;Slide&apos;][&apos;@name&apos;].toString()</mapping>
+          <defaultValue></defaultValue>
+          <replacements/>
+        </com.mirth.connect.plugins.messagebuilder.MessageBuilderStep>
+        <com.mirth.connect.plugins.messagebuilder.MessageBuilderStep version="3.8.1">
+          <name>OBR_CASEID</name>
+          <sequenceNumber>2</sequenceNumber>
+          <enabled>true</enabled>
+          <messageSegment>tmp[&apos;OBR&apos;][&apos;OBR.2&apos;][&apos;OBR.2.1&apos;]</messageSegment>
+          <mapping>msg[&apos;CaseDetail&apos;][2][&apos;@text&apos;].toString()</mapping>
+          <defaultValue></defaultValue>
+          <replacements/>
+        </com.mirth.connect.plugins.messagebuilder.MessageBuilderStep>
+        <com.mirth.connect.plugins.messagebuilder.MessageBuilderStep version="3.8.1">
+          <name>Image_type</name>
+          <sequenceNumber>3</sequenceNumber>
+          <enabled>true</enabled>
+          <messageSegment>tmp[&apos;OBX&apos;][0][&apos;OBX.3&apos;][&apos;OBX.3.2&apos;]</messageSegment>
+          <mapping>msg[&apos;Case&apos;][&apos;Slide&apos;][0][&apos;Cell&apos;][0][&apos;Blob&apos;][&apos;@name&apos;].toString()</mapping>
+          <defaultValue></defaultValue>
+          <replacements/>
+        </com.mirth.connect.plugins.messagebuilder.MessageBuilderStep>
+        <com.mirth.connect.plugins.messagebuilder.MessageBuilderStep version="3.8.1">
+          <name>Image_blobpath</name>
+          <sequenceNumber>4</sequenceNumber>
+          <enabled>true</enabled>
+          <messageSegment>tmp[&apos;OBX&apos;][0][&apos;OBX.5&apos;][&apos;OBX.5.1&apos;]</messageSegment>
+          <mapping>msg[&apos;Case&apos;][&apos;Slide&apos;][0][&apos;Cell&apos;][0][&apos;Blob&apos;][&apos;@blobpath&apos;].toString()</mapping>
+          <defaultValue></defaultValue>
+          <replacements/>
+        </com.mirth.connect.plugins.messagebuilder.MessageBuilderStep>
+        <com.mirth.connect.plugins.messagebuilder.MessageBuilderStep version="3.8.1">
+          <name>Map_name_to_NTE_MET</name>
+          <sequenceNumber>5</sequenceNumber>
+          <enabled>true</enabled>
+          <messageSegment>tmp[&apos;NTE&apos;][0][&apos;NTE.3&apos;][&apos;NTE.3.1&apos;]</messageSegment>
+          <mapping>msg[&apos;Case&apos;][&apos;Slide&apos;][0][&apos;Cell&apos;][0][&apos;@name&apos;].toString()</mapping>
+          <defaultValue></defaultValue>
+          <replacements/>
+        </com.mirth.connect.plugins.messagebuilder.MessageBuilderStep>
+        <com.mirth.connect.plugins.messagebuilder.MessageBuilderStep version="3.8.1">
+          <name>Map_name_to_NTE_MET2</name>
+          <sequenceNumber>6</sequenceNumber>
+          <enabled>true</enabled>
+          <messageSegment>tmp[&apos;NTE&apos;][1][&apos;NTE.3&apos;][&apos;NTE.3.1&apos;]</messageSegment>
+          <mapping>msg[&apos;Case&apos;][&apos;Slide&apos;][0][&apos;Cell&apos;][0][&apos;@name&apos;].toString()</mapping>
+          <defaultValue></defaultValue>
+          <replacements/>
+        </com.mirth.connect.plugins.messagebuilder.MessageBuilderStep>
+      </elements>
+      <inboundTemplate encoding="base64">PENhc2VEZXRhaWxzU2V0Pg0KICAgIDxDYXNlRGV0YWlsIGN0cmx0eXBlPSJUZXh0IiBlZGl0YWJs
+ZT0iRmFsc2UiIG1hbmRhdG9yeT0iRmFsc2UiIHRleHQ9IkFZRVJTLCBBUFJJTCBDSFJJU1RJTkUi
+IHRpdGxlPSJQYXRpZW50IiB0eXBlPSJzeXN0ZW0iLz4NCiAgICA8Q2FzZURldGFpbCBjdHJsdHlw
+ZT0iRGF0ZSIgZWRpdGFibGU9IkZhbHNlIiBtYW5kYXRvcnk9IkZhbHNlIiB0ZXh0PSI1LzMvMTk3
+OCAxMjowMDowMCBBTSIgdGl0bGU9IkRhdGUgb2YgYmlydGgiIHR5cGU9InN5c3RlbSIvPg0KICAg
+IDxDYXNlRGV0YWlsIGN0cmx0eXBlPSJUZXh0IiBlZGl0YWJsZT0iRmFsc2UiIG1hbmRhdG9yeT0i
+RmFsc2UiIHRleHQ9IlBSTi0yMS0xNzQiIHRpdGxlPSJPcmRlciMiIHR5cGU9InN5c3RlbSIvPg0K
+ICAgIDxDYXNlRGV0YWlsIGN0cmx0eXBlPSJUZXh0IiBlZGl0YWJsZT0iRmFsc2UiIG1hbmRhdG9y
+eT0iRmFsc2UiIHRleHQ9IlBPQyBWaWxsaSIgdGl0bGU9IlNwZWNpbWVuIFR5cGUiIHR5cGU9InN5
+c3RlbSIvPg0KICAgIDxDYXNlRGV0YWlsIGN0cmx0eXBlPSJUZXh0IiBlZGl0YWJsZT0iRmFsc2Ui
+IG1hbmRhdG9yeT0iRmFsc2UiIHRleHQ9IlBWIiB0aXRsZT0iU3BlY2ltZW4gVHlwZXMiIHR5cGU9
+InN5c3RlbSIvPg0KICAgIDxDYXNlRGV0YWlsIGN0cmx0eXBlPSJNdWx0aUxpbmVUZXh0IiBlZGl0
+YWJsZT0iRmFsc2UiIG1hbmRhdG9yeT0iRmFsc2UiIHRleHQ9Ik1pc3NlZCBBYm9ydGlvbiIgdGl0
+bGU9IlJlZmVycmFsIHJlYXNvbiIgdHlwZT0ic3lzdGVtIi8+DQogICAgPENhc2VEZXRhaWwgY3Ry
+bHR5cGU9IlRleHQiIGVkaXRhYmxlPSJGYWxzZSIgbWFuZGF0b3J5PSJGYWxzZSIgdGV4dD0iU0ND
+IiB0aXRsZT0iVGVjaG5vbG9naXN0IiB0eXBlPSJzeXN0ZW0iLz4NCiAgICA8Q2FzZURldGFpbCBj
+dHJsdHlwZT0iVGV4dCIgZWRpdGFibGU9IkZhbHNlIiBtYW5kYXRvcnk9IkZhbHNlIiB0ZXh0PSJU
+aHUgTWF5IDI3IDE1OjAyOjI2IEVEVCAyMDIxIiB0aXRsZT0iRGF0ZSIgdHlwZT0ic3lzdGVtIi8+
+DQogICAgPENhc2VEZXRhaWwgY3RybHR5cGU9Ik11bHRpTGluZVRleHQiIGVkaXRhYmxlPSJUcnVl
+IiBtYW5kYXRvcnk9IkZhbHNlIiB0ZXh0PSIiIHRpdGxlPSJDYXNlIENvbW1lbnQiIHR5cGU9InN5
+c3RlbSIvPg0KICAgIDxDYXNlRGV0YWlsIGN0cmx0eXBlPSJNdWx0aUxpbmVUZXh0IiBlZGl0YWJs
+ZT0iVHJ1ZSIgbWFuZGF0b3J5PSJGYWxzZSIgdGV4dD0iIiB0aXRsZT0iUmVzdWx0IiB0eXBlPSJz
+eXN0ZW0iLz4NCiAgICA8Q2FzZURldGFpbCBjdHJsdHlwZT0iTXVsdGlMaW5lVGV4dCIgZWRpdGFi
+bGU9IlRydWUiIG1hbmRhdG9yeT0iRmFsc2UiIHRleHQ9IiIgdGl0bGU9IkltYWdlcyBUbyBJbXBv
+cnQiIHR5cGU9InN5c3RlbSIvPg0KICAgIDxTbGlkZSBmb2xkZXJuYW1lPSJzbGlkZTAiIG5hbWU9
+IkEyL3o3Ij4NCiAgICAgICAgPFNsaWRlRGV0YWlsc1NldD4NCiAgICAgICAgICAgIDxTbGlkZURl
+dGFpbCBjdHJsdHlwZT0iVGV4dCIgZWRpdGFibGU9IkZhbHNlIiBtYW5kYXRvcnk9IkZhbHNlIiB0
+ZXh0PSJBMi0xIiB0aXRsZT0iU2xpZGUgTmFtZSIgdHlwZT0ic3lzdGVtIi8+DQogICAgICAgICAg
+ICA8U2xpZGVEZXRhaWwgY3RybHR5cGU9IlRleHQiIGVkaXRhYmxlPSJGYWxzZSIgbWFuZGF0b3J5
+PSJGYWxzZSIgdGV4dD0iQTItMSIgdGl0bGU9IlZlc3NlbCBOYW1lIiB0eXBlPSJzeXN0ZW0iLz4N
+CiAgICAgICAgICAgIDxTbGlkZURldGFpbCBjdHJsdHlwZT0iVGV4dCIgZWRpdGFibGU9IkZhbHNl
+IiBtYW5kYXRvcnk9IkZhbHNlIiB0ZXh0PSJHVEciIHRpdGxlPSJTdGFpbi9Qcm9iZXMiIHR5cGU9
+InN5c3RlbSIvPg0KICAgICAgICA8L1NsaWRlRGV0YWlsc1NldD4NCiAgICAgICAgPENlbGwgZm9s
+ZGVybmFtZT0iY2VsbDAiIG5hbWU9IjEwOC4weDQuMyI+DQogICAgICAgICAgICA8S2FyeVJlc3Vs
+dCBhbmFseXNlZD0iVHJ1ZSIgY291bnRlZD0iVHJ1ZSIgcmVzdWx0PSI0NSxYLC0xNywrMjEiLz4N
+CiAgICAgICAgICAgIDxDZWxsSW5mbyBjZWxsSWQ9IjAiIGNvbG9ueT0iMjE0NzQ4MzY0NyIgY29t
+bWVudD0iIiBzY2FuYXJlYT0iIi8+DQogICAgICAgICAgICA8QmxvYiBibG9icGF0aD0iY2I1YjE5
+ZWYtNjk4Zi00OGFhLWFkZjctODZlNDlhMzhlNjYyLmpwZWciIGJsb2J0eXBlPSIubWV0IiBuYW1l
+PSJpbWFnZTAubWV0IiB0eXBlPSJqcGVnIi8+DQogICAgICAgIDwvQ2VsbD4NCiAgICAgICAgPENl
+bGwgZm9sZGVybmFtZT0iY2VsbDEiIG5hbWU9IkNWSU1QIDEwOC4yeDUuNCI+DQogICAgICAgICAg
+ICA8S2FyeVJlc3VsdCBhbmFseXNlZD0iRmFsc2UiIGNvdW50ZWQ9IkZhbHNlIiByZXN1bHQ9IiAi
+Lz4NCiAgICAgICAgICAgIDxDZWxsSW5mbyBjZWxsSWQ9IjAiIGNvbG9ueT0iMjE0NzQ4MzY0NyIg
+Y29tbWVudD0iIiBzY2FuYXJlYT0iIi8+DQogICAgICAgICAgICA8QmxvYiBibG9icGF0aD0iYjFl
+ZTcyMWUtY2ViZi00YjkxLWFlYjYtMzQ4NDkxOGEzZTg3LmpwZWciIGJsb2J0eXBlPSIubWV0IiBu
+YW1lPSJpbWFnZTAubWV0IiB0eXBlPSJqcGVnIi8+DQogICAgICAgICAgICA8QmxvYiBibG9icGF0
+aD0iNDU2Mzg5OTEtYzFkNy00ZjRkLThmODItZTRlYmQyZjI5ZDdmLmpwZWciIGJsb2J0eXBlPSIu
+a2FyIiBuYW1lPSJpbWFnZTEua2FyIiB0eXBlPSJqcGVnIi8+DQogICAgICAgIDwvQ2VsbD4NCiAg
+ICAgICAgPENlbGwgZm9sZGVybmFtZT0iY2VsbDIiIG5hbWU9IjEwOC4yeDguNCI+DQogICAgICAg
+ICAgICA8S2FyeVJlc3VsdCBhbmFseXNlZD0iVHJ1ZSIgY291bnRlZD0iVHJ1ZSIgcmVzdWx0PSI0
+NyxYWCwrMjEiLz4NCiAgICAgICAgICAgIDxDZWxsSW5mbyBjZWxsSWQ9IjAiIGNvbG9ueT0iMjE0
+NzQ4MzY0NyIgY29tbWVudD0iIiBzY2FuYXJlYT0iIi8+DQogICAgICAgICAgICA8QmxvYiBibG9i
+cGF0aD0iZjQ1MmY4OTAtODE4OC00Y2M5LTk2MGMtMmM0YTNhYTBjZDlmLmpwZWciIGJsb2J0eXBl
+PSIubWV0IiBuYW1lPSJpbWFnZTAubWV0IiB0eXBlPSJqcGVnIi8+DQogICAgICAgIDwvQ2VsbD4N
+CiAgICA8L1NsaWRlPg0KPC9DYXNlRGV0YWlsc1NldD4NCg==</inboundTemplate>
+      <outboundTemplate encoding="base64">TVNIfF5+XCZ8REl8MTIzMjAxfEVQSUMgQkVBS0VSfDE0MXwyMDIxMDcwNjExNTcxNnx8U1NVXlUw
+M3w2NTM0fFB8Mi40fHx8QUx8TkUNCk9SQ3xSRXwyMUpOLUNDRzAyOTd8NDAwMDI5MDEzMjZ8fHx8
+Xl5eMjAyMTA2MjUxMDAxMDBeXlJeXnx8fHx8MTA0MzYyMjg1NV5NT0xJTkFeSk9ITl5DfHx8fHx8
+fHx8fHwNCk9CUnwxfDIxSk4tQ0NHMDI5N3w0MDAwMjkwMTMyNnwxMjMyMDAwMDQ5OV5DYW5jZXIg
+S2FyeW90eXBlfFJ8MjAyMTA3MDIxNDE5MTB8MjAyMTA2MjUxMTQ2NTh8fApPQlh8MXxUWHwxMjMy
+MDAwMDQ4NF5pbWFnZS5tZXQtOHwxMjMyMDAwMDQ5OXxlYTc5MGI2OC1kYzhhLTQzZGUtOGFkOS1i
+MzFkYzFkYWM3NjAuanBlZ3x8LXx8fHw1fHx8fHx8MTIzNDg3fEpISCBDWVRPTElOS19BVVRPDQpO
+VEV8MXxMfENWSU1QX1UzNy8wX2NlbGwgNjc2DQpPQlJ8MXwyMUpOLUNDRzAyOTd8NDAwMDI5MDEz
+MjZ8MTIzMjAwMDA0OTleQ2FuY2VyIEthcnlvdHlwZXxSfDIwMjEwNzAyMTQxOTEwfDIwMjEwNjI1
+MTE0NjU4fHwKT0JYfDJ8UlB8MTIzMjAwMDA0ODR8MTIzMjAwMDA0OTl8SUMtcHJkLTExMzA4MDAw
+MTcuSlBFR15FcGljV0JTXkpQRUdeQmFzZTY0Xnx8fHx8fEZ8fHx8fHx8SkhIIENZVE9MSU5LX0FV
+VE8NCk5URXwxfEx8Q1ZJTVBfVTM3LzBfY2VsbCA2NzY=</outboundTemplate>
+      <inboundDataType>XML</inboundDataType>
+      <outboundDataType>HL7V2</outboundDataType>
+      <inboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.8.1">
+        <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.8.1">
+          <stripNamespaces>false</stripNamespaces>
+        </serializationProperties>
+        <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.8.1">
+          <splitType>Element_Name</splitType>
+          <elementName></elementName>
+          <level>1</level>
+          <query></query>
+          <batchScript></batchScript>
+        </batchProperties>
+      </inboundProperties>
+      <outboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.8.1">
+        <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.8.1">
+          <handleRepetitions>true</handleRepetitions>
+          <handleSubcomponents>true</handleSubcomponents>
+          <useStrictParser>false</useStrictParser>
+          <useStrictValidation>false</useStrictValidation>
+          <stripNamespaces>true</stripNamespaces>
+          <segmentDelimiter>\r</segmentDelimiter>
+          <convertLineBreaks>true</convertLineBreaks>
+        </serializationProperties>
+        <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.8.1">
+          <useStrictParser>false</useStrictParser>
+          <useStrictValidation>false</useStrictValidation>
+          <segmentDelimiter>\r</segmentDelimiter>
+        </deserializationProperties>
+        <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.8.1">
+          <splitType>MSH_Segment</splitType>
+          <batchScript></batchScript>
+        </batchProperties>
+        <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.8.1">
+          <segmentDelimiter>\r</segmentDelimiter>
+          <successfulACKCode>AA</successfulACKCode>
+          <successfulACKMessage></successfulACKMessage>
+          <errorACKCode>AE</errorACKCode>
+          <errorACKMessage>An Error Occurred Processing Message.</errorACKMessage>
+          <rejectedACKCode>AR</rejectedACKCode>
+          <rejectedACKMessage>Message Rejected.</rejectedACKMessage>
+          <msh15ACKAccept>false</msh15ACKAccept>
+          <dateFormat>yyyyMMddHHmmss.SSS</dateFormat>
+        </responseGenerationProperties>
+        <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.8.1">
+          <successfulACKCode>AA,CA</successfulACKCode>
+          <errorACKCode>AE,CE</errorACKCode>
+          <rejectedACKCode>AR,CR</rejectedACKCode>
+          <validateMessageControlId>true</validateMessageControlId>
+          <originalMessageControlId>Destination_Encoded</originalMessageControlId>
+          <originalIdMapVariable></originalIdMapVariable>
+        </responseValidationProperties>
+      </outboundProperties>
+    </transformer>
+    <filter version="3.8.1">
+      <elements/>
+    </filter>
+    <transportName>Channel Reader</transportName>
+    <mode>SOURCE</mode>
+    <enabled>true</enabled>
+    <waitForPrevious>true</waitForPrevious>
+  </sourceConnector>
+  <destinationConnectors>
+    <connector version="3.8.1">
+      <metaDataId>1</metaDataId>
+      <name>Destination 1</name>
+      <properties class="com.mirth.connect.connectors.vm.VmDispatcherProperties" version="3.8.1">
+        <pluginProperties/>
+        <destinationConnectorProperties version="3.8.1">
+          <queueEnabled>false</queueEnabled>
+          <sendFirst>false</sendFirst>
+          <retryIntervalMillis>10000</retryIntervalMillis>
+          <regenerateTemplate>false</regenerateTemplate>
+          <retryCount>0</retryCount>
+          <rotate>false</rotate>
+          <includeFilterTransformer>false</includeFilterTransformer>
+          <threadCount>1</threadCount>
+          <threadAssignmentVariable></threadAssignmentVariable>
+          <validateResponse>false</validateResponse>
+          <resourceIds class="linked-hash-map">
+            <entry>
+              <string>Default Resource</string>
+              <string>[Default Resource]</string>
+            </entry>
+          </resourceIds>
+          <queueBufferSize>1000</queueBufferSize>
+          <reattachAttachments>true</reattachAttachments>
+        </destinationConnectorProperties>
+        <channelId>72f0944f-0321-4893-a214-cc008021bfc8</channelId>
+        <channelTemplate>${message.encodedData}</channelTemplate>
+        <mapVariables/>
+      </properties>
+      <transformer version="3.8.1">
+        <elements/>
+        <inboundTemplate encoding="base64"></inboundTemplate>
+        <outboundTemplate encoding="base64"></outboundTemplate>
+        <inboundDataType>HL7V2</inboundDataType>
+        <outboundDataType>XML</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.8.1">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.8.1">
+            <handleRepetitions>true</handleRepetitions>
+            <handleSubcomponents>true</handleSubcomponents>
+            <useStrictParser>false</useStrictParser>
+            <useStrictValidation>false</useStrictValidation>
+            <stripNamespaces>true</stripNamespaces>
+            <segmentDelimiter>\r</segmentDelimiter>
+            <convertLineBreaks>true</convertLineBreaks>
+          </serializationProperties>
+          <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.8.1">
+            <useStrictParser>false</useStrictParser>
+            <useStrictValidation>false</useStrictValidation>
+            <segmentDelimiter>\r</segmentDelimiter>
+          </deserializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.8.1">
+            <splitType>MSH_Segment</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+          <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.8.1">
+            <segmentDelimiter>\r</segmentDelimiter>
+            <successfulACKCode>AA</successfulACKCode>
+            <successfulACKMessage></successfulACKMessage>
+            <errorACKCode>AE</errorACKCode>
+            <errorACKMessage>An Error Occurred Processing Message.</errorACKMessage>
+            <rejectedACKCode>AR</rejectedACKCode>
+            <rejectedACKMessage>Message Rejected.</rejectedACKMessage>
+            <msh15ACKAccept>false</msh15ACKAccept>
+            <dateFormat>yyyyMMddHHmmss.SSS</dateFormat>
+          </responseGenerationProperties>
+          <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.8.1">
+            <successfulACKCode>AA,CA</successfulACKCode>
+            <errorACKCode>AE,CE</errorACKCode>
+            <rejectedACKCode>AR,CR</rejectedACKCode>
+            <validateMessageControlId>true</validateMessageControlId>
+            <originalMessageControlId>Destination_Encoded</originalMessageControlId>
+            <originalIdMapVariable></originalIdMapVariable>
+          </responseValidationProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.8.1">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.8.1">
+            <stripNamespaces>true</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.8.1">
+            <splitType>Element_Name</splitType>
+            <elementName></elementName>
+            <level>1</level>
+            <query></query>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </transformer>
+      <responseTransformer version="3.8.1">
+        <elements/>
+        <inboundDataType>XML</inboundDataType>
+        <outboundDataType>XML</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.8.1">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.8.1">
+            <stripNamespaces>true</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.8.1">
+            <splitType>Element_Name</splitType>
+            <elementName></elementName>
+            <level>1</level>
+            <query></query>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.8.1">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.8.1">
+            <stripNamespaces>true</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.8.1">
+            <splitType>Element_Name</splitType>
+            <elementName></elementName>
+            <level>1</level>
+            <query></query>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </responseTransformer>
+      <filter version="3.8.1">
+        <elements/>
+      </filter>
+      <transportName>Channel Writer</transportName>
+      <mode>DESTINATION</mode>
+      <enabled>true</enabled>
+      <waitForPrevious>true</waitForPrevious>
+    </connector>
+  </destinationConnectors>
+  <preprocessingScript>// Modify the message variable below to pre process data
+return message;</preprocessingScript>
+  <postprocessingScript>// This script executes once after a message has been processed
+// Responses returned from here will be stored as &quot;Postprocessor&quot; in the response map
+return;</postprocessingScript>
+  <deployScript>// This script executes once when the channel is deployed
+// You only have access to the globalMap and globalChannelMap here to persist data
+return;</deployScript>
+  <undeployScript>// This script executes once when the channel is undeployed
+// You only have access to the globalMap and globalChannelMap here to persist data
+return;</undeployScript>
+  <properties version="3.8.1">
+    <clearGlobalChannelMap>true</clearGlobalChannelMap>
+    <messageStorageMode>DEVELOPMENT</messageStorageMode>
+    <encryptData>false</encryptData>
+    <removeContentOnCompletion>false</removeContentOnCompletion>
+    <removeOnlyFilteredOnCompletion>false</removeOnlyFilteredOnCompletion>
+    <removeAttachmentsOnCompletion>false</removeAttachmentsOnCompletion>
+    <initialState>STARTED</initialState>
+    <storeAttachments>false</storeAttachments>
+    <metaDataColumns>
+      <metaDataColumn>
+        <name>SOURCE</name>
+        <type>STRING</type>
+        <mappingName>mirth_source</mappingName>
+      </metaDataColumn>
+      <metaDataColumn>
+        <name>TYPE</name>
+        <type>STRING</type>
+        <mappingName>mirth_type</mappingName>
+      </metaDataColumn>
+    </metaDataColumns>
+    <attachmentProperties version="3.8.1">
+      <type>None</type>
+      <properties/>
+    </attachmentProperties>
+    <resourceIds class="linked-hash-map">
+      <entry>
+        <string>Default Resource</string>
+        <string>[Default Resource]</string>
+      </entry>
+    </resourceIds>
+  </properties>
+  <exportData>
+    <metadata>
+      <enabled>true</enabled>
+      <lastModified>
+        <time>1634668388164</time>
+        <timezone>America/New_York</timezone>
+      </lastModified>
+      <pruningSettings>
+        <pruneContentDays>14</pruneContentDays>
+        <archiveEnabled>true</archiveEnabled>
+      </pruningSettings>
+    </metadata>
+    <codeTemplateLibraries>
+      <codeTemplateLibrary version="3.8.1">
+        <id>f9faa6d5-afd4-4465-969f-fc4226fed7a8</id>
+        <name>DataServer</name>
+        <revision>1</revision>
+        <lastModified>
+          <time>1626372666374</time>
+          <timezone>America/New_York</timezone>
+        </lastModified>
+        <description>Classes and methods for executing transactions with DataServer.</description>
+        <includeNewChannels>true</includeNewChannels>
+        <enabledChannelIds>
+          <string>58ae4e28-44eb-42fd-bc02-2dcd769965ed</string>
+          <string>67ec4e5d-befe-4387-b532-b294fd72f31a</string>
+          <string>b15ef323-0f2f-42e7-921d-689edb352ef1</string>
+          <string>20d4f098-5d7e-45ab-b637-71ef819bf060</string>
+          <string>4c3229f4-08a8-4d1c-9305-eac7603c561</string>
+          <string>35ae5099-edce-4214-b709-99c9060e2392</string>
+          <string>dbf5ad02-b695-4512-aae4-a39e24103dfe</string>
+          <string>193eae5c-334a-4835-a84b-ffae6e64361d</string>
+        </enabledChannelIds>
+        <disabledChannelIds>
+          <string>b5409196-2798-4ef0-9c33-7e9b7232066b</string>
+        </disabledChannelIds>
+        <codeTemplates>
+          <codeTemplate version="3.8.1">
+            <id>7d3c353a-38c9-4c7a-8844-a84e80520411</id>
+            <name>DataServerClient</name>
+            <revision>1</revision>
+            <lastModified>
+              <time>1626372666604</time>
+              <timezone>America/New_York</timezone>
+            </lastModified>
+            <contextSet>
+              <delegate>
+                <contextType>GLOBAL_POSTPROCESSOR</contextType>
+                <contextType>GLOBAL_DEPLOY</contextType>
+                <contextType>GLOBAL_PREPROCESSOR</contextType>
+                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+                <contextType>SOURCE_RECEIVER</contextType>
+                <contextType>CHANNEL_BATCH</contextType>
+                <contextType>CHANNEL_PREPROCESSOR</contextType>
+                <contextType>CHANNEL_UNDEPLOY</contextType>
+                <contextType>CHANNEL_DEPLOY</contextType>
+                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+                <contextType>CHANNEL_ATTACHMENT</contextType>
+                <contextType>CHANNEL_POSTPROCESSOR</contextType>
+                <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+                <contextType>GLOBAL_UNDEPLOY</contextType>
+                <contextType>DESTINATION_DISPATCHER</contextType>
+              </delegate>
+            </contextSet>
+            <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
+              <type>FUNCTION</type>
+              <code>/**
+	A generic builder for the DataServerClient.
+
+	@param requestXml - The request XML string from any of the DataServer wrapper classes.
+	@param  dsMethodName - The name of the DataServer method being called.&lt;br/&gt;
+	@method doRequest Executes the method named in dsMethodName.
+ */
+function DataServerClient( requestXml, dsMethodName )
+{
+	this.requestXml   = requestXml;
+	this.dsMethodName = dsMethodName;
+	this.responseXml  = &quot;&quot;;
+
+	this.errorMessage = null;
+}
+
+
+/**
+	The doRequest method routes the DataServer request XML to the dsCore-Aperio_Images channel declared in the calling channel&apos;s Deploy script.
+
+	@return If successful, a value of 0 is returned.
+	If the DataServer call was unsuccessful the XML response result code (less-than 0) is returned. 
+	If the Mirth message router returns a status other than SENT, a greater-than 0 integer is returned corresponding to the com.mirth.connect.userutil.Status enum.
+ */
+DataServerClient.prototype.doRequest = function()
+{
+	var retVal    = 0;
+	var CH_NAME   =  ( null === $gc(&apos;dsChannelID&apos;) ) ? &quot;dsCore-Aperio_Images&quot; : $gc(&apos;dsChannelID&apos;);
+
+	if ( this.dsMethodName == &quot;IsValidToken&quot;
+	  || this.dsMethodName == &quot;ApplicationLogon&quot;
+	  || this.dsMethodName == &quot;Logon&quot; )
+		CH_NAME = &quot;dsCore-Aperio_Security&quot;;
+	
+	var r = router.routeMessage( CH_NAME, this.requestXml );
+	
+	if ( &quot;SENT&quot; == r.getStatus() )
+	{
+		var dsResp = com.leicabio.mirthlib.dataserver.Method.valueOf( this.dsMethodName ).createResponse( r.getMessage() );
+		if ( 0 === ( retVal = dsResp.getResultCode() ) )
+		{
+			this.responseXml = r.getMessage();
+		}
+		else
+		{
+			retVal = dsResp.getResultCode();
+			this.errorMessage = dsResp.getResultMessage();
+			if( -7002 == retVal )
+			{
+				//Token is invalid or timed out. Reset the global vars
+				$g( &apos;ESM_TOKEN&apos;, &quot;&quot; );
+				$g( &apos;ESM_TOKEN_EXPIRE&apos;, DateUtil.getCurrentDate( &quot;yyyy-MM-dd HH:mm:ss&quot; ) );
+			}
+		}
+	}
+	else
+	{
+		if ( &quot;ERROR&quot; == r.getStatus() )
+			$g( &apos;ESM_IS_READY&apos;, false );
+
+		retVal = Status.valueOf( r.getStatus().toString() ).ordinal(); 
+		this.errorMessage = r.getStatusMessage();
+	}
+	
+	return retVal;
+};
+</code>
+            </properties>
+          </codeTemplate>
+          <codeTemplate version="3.8.1">
+            <id>ec3afebf-3377-42de-821f-2a5ad0b42347</id>
+            <name>deleteRecord</name>
+            <revision>1</revision>
+            <lastModified>
+              <time>1626372666696</time>
+              <timezone>America/New_York</timezone>
+            </lastModified>
+            <contextSet>
+              <delegate>
+                <contextType>GLOBAL_POSTPROCESSOR</contextType>
+                <contextType>GLOBAL_DEPLOY</contextType>
+                <contextType>GLOBAL_PREPROCESSOR</contextType>
+                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+                <contextType>SOURCE_RECEIVER</contextType>
+                <contextType>CHANNEL_BATCH</contextType>
+                <contextType>CHANNEL_PREPROCESSOR</contextType>
+                <contextType>CHANNEL_UNDEPLOY</contextType>
+                <contextType>CHANNEL_DEPLOY</contextType>
+                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+                <contextType>CHANNEL_ATTACHMENT</contextType>
+                <contextType>CHANNEL_POSTPROCESSOR</contextType>
+                <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+                <contextType>GLOBAL_UNDEPLOY</contextType>
+                <contextType>DESTINATION_DISPATCHER</contextType>
+              </delegate>
+            </contextSet>
+            <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
+              <type>FUNCTION</type>
+              <code>/**
+	Deletes a single record by table and primary key
+
+	@param tableName - The table name of the record to delete.
+	@param primaryKey - The ID of the record to delete.
+	@return Boolean &lt;code&gt;true&lt;/code&gt; if successful, &lt;code&gt;false&lt;/code&gt; if failed.
+ */
+function deleteRecord( tableName, primaryKey )
+{
+	var isDeleted = false;
+	var LOGSTAMP   = &quot;[deleteRecord] &quot;;
+
+	var drdRequest = com.leicabio.mirthlib.dataserver.Method.DeleteRecordData.createRequest( $g(&apos;ESM_TOKEN&apos;), tableName, primaryKey );
+	
+	logger.debug( LOGSTAMP + drdRequest.logLine() );
+
+	var dsClient = new DataServerClient( drdRequest.toString(), drdRequest.methodName );
+	var dsResult = dsClient.doRequest();
+
+	if ( 0 == dsResult )
+	{
+		isDeleted = true;
+		logger.debug( LOGSTAMP + &quot; succeeded.&quot; );
+	}
+	else
+	{
+		if ( 0 &gt; dsResult )
+			logger.error( LOGSTAMP + &quot;failed. DataServer ResultMessage: &quot; + dsClient.errorMessage );
+		else
+			logger.error( LOGSTAMP + &quot;failed. Mirth router message: &quot; + dsClient.errorMessage );
+	}
+
+	return isDeleted;
+}
+</code>
+            </properties>
+          </codeTemplate>
+          <codeTemplate version="3.8.1">
+            <id>0d83087c-b53e-4ed2-8a96-22c81f539ebb</id>
+            <name>GetAnnotations</name>
+            <revision>1</revision>
+            <lastModified>
+              <time>1626372666462</time>
+              <timezone>America/New_York</timezone>
+            </lastModified>
+            <contextSet>
+              <delegate>
+                <contextType>GLOBAL_POSTPROCESSOR</contextType>
+                <contextType>GLOBAL_DEPLOY</contextType>
+                <contextType>GLOBAL_PREPROCESSOR</contextType>
+                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+                <contextType>SOURCE_RECEIVER</contextType>
+                <contextType>CHANNEL_BATCH</contextType>
+                <contextType>CHANNEL_PREPROCESSOR</contextType>
+                <contextType>CHANNEL_UNDEPLOY</contextType>
+                <contextType>CHANNEL_DEPLOY</contextType>
+                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+                <contextType>CHANNEL_ATTACHMENT</contextType>
+                <contextType>CHANNEL_POSTPROCESSOR</contextType>
+                <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+                <contextType>GLOBAL_UNDEPLOY</contextType>
+                <contextType>DESTINATION_DISPATCHER</contextType>
+              </delegate>
+            </contextSet>
+            <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
+              <type>FUNCTION</type>
+              <code>/**
+	DataServer Method : GetAnnotations - Request and response wrappers
+*/
+/*
+	Builds the SOAP body XML schema for calling the GetAnnotations method.
+
+    &lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:web=&quot;http://www.aperio.com/webservices/&quot;&gt;
+        &lt;soapenv:Header/&gt;
+        &lt;soapenv:Body&gt;
+-----------------------------------------------
+            &lt;GetAnnotations&gt;
+                &lt;Token&gt;&lt;/Token&gt;&#xd;
+				&lt;ImageId&gt;&lt;ImageId&gt;
+                &lt;AnnotationId&gt;&lt;/AnnotationId&gt;
+				&lt;Type&gt;&lt;Type&gt;
+            &lt;/GetAnnotations&gt;
+-----------------------------------------------
+        &lt;/soapenv:Body&gt;
+    &lt;/soapenv:Envelope&gt;
+	
+*/
+
+function GetAnnotationsRequest( token, imageId, annotationId, annotationType )
+{
+	this.xRequest = &lt;GetAnnotations&gt;&lt;Token&gt;{token}&lt;/Token&gt;&lt;/GetAnnotations&gt;;
+	
+	this.imageId        = parseInt( imageId );
+	this.annoationId    = parseInt( annotationId );
+	this.annotationType = parseInt( annotationType );
+
+
+	if ( ! isNaN( this.imageId ) &amp;&amp; 0 &lt; this.imageId )
+		this.xRequest.ImageId = this.imageId.toString();
+	else
+	{
+		if ( ! isNaN( this.annotationId ) &amp;&amp; 0 &lt; this.annotationId )
+			this.xRequest.AnnotationId = this.annotationId.toString();
+		
+		if ( ! isNaN( this.annotationType ) &amp;&amp; 0 &lt; this.annotationType )
+			this.xRequest.Type = this.annotationType.toString();
+		
+	}
+}
+
+///////////////////////
+// Method prototypes //
+///////////////////////
+
+GetAnnotationsRequest.prototype.toString = function()
+{
+	return ( this.xRequest.toString() );
+};
+
+
+/***********************************************************************************
+Typical SOAP response schema from the GetAnnotations method: 
+
+&lt;soap:Envelope xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;
+               xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;
+               xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;&#xd;
+    &lt;soap:Header/&gt;&#xd;
+    &lt;soap:Body&gt;&#xd;
+        &lt;GetAnnotationsResponse xmlns=&quot;http://www.aperio.com/webservices/&quot;&gt;&#xd;
+            &lt;GetAnnotationsResult&gt;&#xd;
+                &lt;ASResult&gt;0&lt;/ASResult&gt;&#xd;
+                &lt;ASMessage/&gt;&#xd;
+            &lt;/GetAnnotationsResult&gt;&#xd;
+            &lt;AnnotationsNode&gt;&#xd;
+                &lt;Annotations&gt;&#xd;
+                    &lt;Annotation Id=&quot;106&quot; Incremental=&quot;0&quot; LineColor=&quot;65280&quot; LineColorReadOnly=&quot;0&quot; NameReadOnly=&quot;0&quot; ReadOnly=&quot;0&quot; Selected=&quot;1&quot; Type=&quot;4&quot; Visible=&quot;1&quot;&gt;&#xd;
+                        &lt;ImageId&gt;12&lt;/ImageId&gt;&#xd;
+                        &lt;Attributes&gt;&#xd;
+                            &lt;Attribute Id=&quot;2761&quot; Name=&quot;Description&quot;/&gt;&#xd;
+                        &lt;/Attributes&gt;&#xd;
+                        &lt;Regions&gt;&#xd;
+                            &lt;RegionAttributeHeaders&gt;&#xd;
+                                ...
+                            &lt;/RegionAttributeHeaders&gt;&#xd;
+                            &lt;Region Analyze=&quot;1&quot; Area=&quot;1311500.7&quot; AreaMicrons=&quot;331953.4&quot; DisplayId=&quot;1&quot; Id=&quot;749&quot; ImageFocus=&quot;0&quot; InputRegionId=&quot;0&quot; Length=&quot;4604.9&quot; LengthMicrons=&quot;2316.7&quot; NegativeROA=&quot;0&quot; Selected=&quot;1&quot; Type=&quot;1&quot; Zoom=&quot;0.042564&quot;&gt;&#xd;
+                                &lt;Vertices&gt;&#xd;
+                                    &lt;Vertex X=&quot;6813.324141&quot; Y=&quot;7753.067115&quot;/&gt;&#xd;
+                                    &lt;Vertex X=&quot;8082.012085&quot; Y=&quot;7753.067115&quot;/&gt;&#xd;
+                                    &lt;Vertex X=&quot;8082.012085&quot; Y=&quot;8786.812847&quot;/&gt;&#xd;
+                                    &lt;Vertex X=&quot;6813.324141&quot; Y=&quot;8786.812847&quot;/&gt;&#xd;
+                                &lt;/Vertices&gt;&#xd;
+                            &lt;/Region&gt;&#xd;
+                        &lt;/Regions&gt;
+                    &lt;/Annotation&gt;
+                &lt;/Annotations&gt;&#xd;            &lt;/AnnotationsNode&gt;&#xd;        &lt;/GetAnnotationsResponse&gt;&#xd;
+    &lt;/soap:Body&gt;&#xd;
+&lt;/soap:Envelope&gt;&#xd;
+***********************************************************************************/
+
+///////////////////////
+// Class Constructor //
+///////////////////////
+
+function GetAnnotationsResponse( soapResponse )
+{
+	var genericResponse = new DataServerResponse( soapResponse, &quot;GetAnnotations&quot; );
+	
+	this.resultCode    = genericResponse.getResultCode();
+	this.resultMessage = genericResponse.getResultMessage();
+
+	this.responseBody  = new XML( genericResponse.getBody() );
+}</code>
+            </properties>
+          </codeTemplate>
+          <codeTemplate version="3.8.1">
+            <id>8a4766a5-8c9e-471c-af07-d9b3c835c898</id>
+            <name>getAperioLogonToken</name>
+            <revision>1</revision>
+            <lastModified>
+              <time>1626372666725</time>
+              <timezone>America/New_York</timezone>
+            </lastModified>
+            <contextSet>
+              <delegate>
+                <contextType>GLOBAL_POSTPROCESSOR</contextType>
+                <contextType>GLOBAL_DEPLOY</contextType>
+                <contextType>GLOBAL_PREPROCESSOR</contextType>
+                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+                <contextType>SOURCE_RECEIVER</contextType>
+                <contextType>CHANNEL_BATCH</contextType>
+                <contextType>CHANNEL_PREPROCESSOR</contextType>
+                <contextType>CHANNEL_UNDEPLOY</contextType>
+                <contextType>CHANNEL_DEPLOY</contextType>
+                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+                <contextType>CHANNEL_ATTACHMENT</contextType>
+                <contextType>CHANNEL_POSTPROCESSOR</contextType>
+                <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+                <contextType>GLOBAL_UNDEPLOY</contextType>
+                <contextType>DESTINATION_DISPATCHER</contextType>
+              </delegate>
+            </contextSet>
+            <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
+              <type>FUNCTION</type>
+              <code>/**
+	Get a logon token for the Aperio SOAP interface with the given username and password
+
+	@return Boolean &lt;code&gt;true&lt;/code&gt; if successful, &lt;code&gt;false&lt;/code&gt; if failed.
+ */
+
+function getAperioLogonToken()
+{
+	var LOGSTAMP = &quot;[getAperioLogonToken] &quot;;
+
+	var isTokenValid = false;
+	var token        = $g( &apos;ESM_TOKEN&apos; ) + &quot;&quot;;
+ 	var dsResult     = 0;
+	var dsClient;
+
+	function setExpiration( token )
+	{
+		var ivtReq = com.leicabio.mirthlib.dataserver.Method.IsValidToken.createRequest( token );
+		logger.debug( LOGSTAMP + ivtReq.logLine() );
+
+		dsClient = new DataServerClient( ivtReq.toString(), ivtReq.methodName );
+		dsResult = dsClient.doRequest();
+
+		if ( 0 == dsResult )
+		{
+			var ivtResponse = com.leicabio.mirthlib.dataserver.Method.IsValidToken.createResponse( dsClient.responseXml );
+			logger.debug( LOGSTAMP + ivtResponse.logLine() );
+			isTokenValid = ivtResponse.getValid();
+			globalMap.put( &apos;ESM_TOKEN_EXPIRE&apos;, isTokenValid ? ivtResponse.getTokenExpirationTime() : DateUtil.getCurrentDate( &quot;yyyy-MM-dd HH:mm:ss&quot; ) );
+		}
+		else
+		{
+			globalMap.put( &apos;ESM_TOKEN_EXPIRE&apos;, DateUtil.getCurrentDate( &quot;yyyy-MM-dd HH:mm:ss&quot; ) );
+
+			var errMsg = LOGSTAMP;
+			if ( dsResult &lt; 0 )
+				errMsg += &quot;DataServer returned result code: &quot; + dsResult + &quot;. Message: &quot; + dsClient.errorMessage;
+			else
+				errMsg += &quot;Mirth channel router returned a status of &quot; + Status.values()[ dsResult ] + &quot;. Message: &quot; + dsClient.errorMessage;
+			logger.error( errMsg );
+		}
+	}
+
+	if ( true == isTokenExpired() )
+	{
+		var logonReq = com.leicabio.mirthlib.dataserver.Method.ApplicationLogon.getRequest();
+		logger.debug( LOGSTAMP + logonReq.logLine() );
+
+		dsClient = new DataServerClient( logonReq.toString(), logonReq.methodName );
+		dsResult = dsClient.doRequest();
+
+		if ( 0 == dsResult )
+		{
+			var logonResponse = com.leicabio.mirthlib.dataserver.Method.ApplicationLogon.getResponse( dsClient.responseXml );
+			token = logonResponse.getToken();
+			globalMap.put( &apos;ESM_TOKEN&apos;, token );
+			logger.debug( LOGSTAMP + logonResponse.logLine() );
+			setExpiration( token );
+		}
+		else
+		{
+			globalMap.put( &apos;ESM_TOKEN&apos;, &quot;&quot; );
+			globalMap.put( &apos;ESM_TOKEN_EXPIRE&apos;, DateUtil.getCurrentDate( &quot;yyyy-MM-dd HH:mm:ss&quot; ) );
+
+			var errMsg = LOGSTAMP;
+			if ( dsResult &lt; 0 )
+				errMsg += &quot;DataServer returned result code: &quot; + dsResult + &quot;. Message: &quot; + dsClient.errorMessage;
+			else
+				errMsg += &quot;Mirth channel router returned a status of &quot; + Status.values()[ dsResult ] + &quot;. Message: &quot; + dsClient.errorMessage;
+			logger.error( errMsg );
+		}		
+	}
+
+	return isTokenValid;
+}</code>
+            </properties>
+          </codeTemplate>
+          <codeTemplate version="3.8.1">
+            <id>8d153332-a964-442b-977a-e2e62ec5d427</id>
+            <name>insertUpdateRecord</name>
+            <revision>1</revision>
+            <lastModified>
+              <time>1626372666970</time>
+              <timezone>America/New_York</timezone>
+            </lastModified>
+            <contextSet>
+              <delegate>
+                <contextType>GLOBAL_POSTPROCESSOR</contextType>
+                <contextType>GLOBAL_DEPLOY</contextType>
+                <contextType>GLOBAL_PREPROCESSOR</contextType>
+                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+                <contextType>SOURCE_RECEIVER</contextType>
+                <contextType>CHANNEL_BATCH</contextType>
+                <contextType>CHANNEL_PREPROCESSOR</contextType>
+                <contextType>CHANNEL_UNDEPLOY</contextType>
+                <contextType>CHANNEL_DEPLOY</contextType>
+                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+                <contextType>CHANNEL_ATTACHMENT</contextType>
+                <contextType>CHANNEL_POSTPROCESSOR</contextType>
+                <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+                <contextType>GLOBAL_UNDEPLOY</contextType>
+                <contextType>DESTINATION_DISPATCHER</contextType>
+              </delegate>
+            </contextSet>
+            <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
+              <type>FUNCTION</type>
+              <code>/**
+	Calls the PutRecordData method with a PutRecordDataRequest object as input
+	parameter. Returns the ID of the inserted/updated record or &lt;1 if an error.
+
+
+	@param putRecordDataRequest - The request object to use in the call.
+	@return The ID of the record that was inserted or updated.&lt;br /&gt;
+	&lt;br /&gt;
+	A return value of ID_UNK (-1) means the method failed and the error has been logged.
+*/
+function insertUpdateRecord( putRecordDataRequest )
+{
+	var ReturnId = $cfg(&apos;ID_UNK&apos;);
+	var LOGSTAMP = &quot;[insertUpdateRecord] &quot;;
+
+	logger.debug( LOGSTAMP + putRecordDataRequest.logLine() );
+
+	var dsClient = new DataServerClient( putRecordDataRequest.toString(), putRecordDataRequest.methodName );
+	var dsResult = dsClient.doRequest();
+	
+	if ( 0 == dsResult )
+	{
+		var putResp = com.leicabio.mirthlib.dataserver.Method.PutRecordData.createResponse( dsClient.responseXml );
+		ReturnId = putResp.getId();
+		var append = &quot;UPDATE&quot; == putRecordDataRequest.logLine().substr( 0, 6 ) ? &quot;The UPDATE was successful&quot; : &quot;The INSERT returned an Id of &quot; + ReturnId;
+		logger.debug( LOGSTAMP + append );
+	}
+	else
+	{
+		var errMsg = LOGSTAMP;
+		if ( dsResult &lt; 0 )
+			errMsg += &quot;DataServer returned result code: &quot; + dsResult + &quot;. Message: &quot; + dsClient.errorMessage;
+		else
+			errMsg += &quot;Mirth channel router returned a status of &quot; + Status.values()[ dsResult ] + &quot;. Message: &quot; + dsClient.errorMessage;
+		logger.error( errMsg );
+	}
+
+	return ReturnId;
+}</code>
+            </properties>
+          </codeTemplate>
+          <codeTemplate version="3.8.1">
+            <id>671ad52c-0ce1-4256-93b3-4104baaeccab</id>
+            <name>lookupChildIds</name>
+            <revision>1</revision>
+            <lastModified>
+              <time>1626372666571</time>
+              <timezone>America/New_York</timezone>
+            </lastModified>
+            <contextSet>
+              <delegate>
+                <contextType>GLOBAL_POSTPROCESSOR</contextType>
+                <contextType>GLOBAL_DEPLOY</contextType>
+                <contextType>GLOBAL_PREPROCESSOR</contextType>
+                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+                <contextType>SOURCE_RECEIVER</contextType>
+                <contextType>CHANNEL_BATCH</contextType>
+                <contextType>CHANNEL_PREPROCESSOR</contextType>
+                <contextType>CHANNEL_UNDEPLOY</contextType>
+                <contextType>CHANNEL_DEPLOY</contextType>
+                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+                <contextType>CHANNEL_ATTACHMENT</contextType>
+                <contextType>CHANNEL_POSTPROCESSOR</contextType>
+                <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+                <contextType>GLOBAL_UNDEPLOY</contextType>
+                <contextType>DESTINATION_DISPATCHER</contextType>
+              </delegate>
+            </contextSet>
+            <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
+              <type>FUNCTION</type>
+              <code>/**
+	Looks up the child primary keys for a parent record in the core eSM hierarchy.&lt;br /&gt;
+	An extension of the lookupEntityIds function.
+
+	@param token - The current session token.
+	@param parentTableName - The table name of the parent record.
+	@param parentId - The primary key of the parent record.
+	@param childTableName - The name of the child table to query.
+
+	@return An array of integers as the primary key result set.&lt;br /&gt;
+	&lt;br /&gt;
+	An empty return array (ids.length == 0) indicates an error occured.&lt;br /&gt;
+	A return array with one item == 0 (ID_NULL) indicates a record was not returned according to input filter constraints.
+ */
+function lookupChildIds( token, parentTableName, parentId, childTableName )
+{
+	var gfrlRequest = com.leicabio.mirthlib.dataserver.Method.GetFilteredRecordList.createRequest( token, childTableName );
+	gfrlRequest.addFilter( &quot;ParentTable&quot;, &quot;=&quot;, parentTableName );
+	gfrlRequest.addFilter( &quot;ParentId&quot;, &quot;=&quot;, parentId );
+	
+	return lookupEntityIds( gfrlRequest );
+}</code>
+            </properties>
+          </codeTemplate>
+          <codeTemplate version="3.8.1">
+            <id>751eff51-a737-4ed4-a775-385e4fe7c25b</id>
+            <name>lookupEntityIds</name>
+            <revision>1</revision>
+            <lastModified>
+              <time>1626372667033</time>
+              <timezone>America/New_York</timezone>
+            </lastModified>
+            <contextSet>
+              <delegate>
+                <contextType>GLOBAL_POSTPROCESSOR</contextType>
+                <contextType>GLOBAL_DEPLOY</contextType>
+                <contextType>GLOBAL_PREPROCESSOR</contextType>
+                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+                <contextType>SOURCE_RECEIVER</contextType>
+                <contextType>CHANNEL_BATCH</contextType>
+                <contextType>CHANNEL_PREPROCESSOR</contextType>
+                <contextType>CHANNEL_UNDEPLOY</contextType>
+                <contextType>CHANNEL_DEPLOY</contextType>
+                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+                <contextType>CHANNEL_ATTACHMENT</contextType>
+                <contextType>CHANNEL_POSTPROCESSOR</contextType>
+                <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+                <contextType>GLOBAL_UNDEPLOY</contextType>
+                <contextType>DESTINATION_DISPATCHER</contextType>
+              </delegate>
+            </contextSet>
+            <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
+              <type>FUNCTION</type>
+              <code>/**
+	Looks up the primary key values for any table visible to the GetFilteredRecordList method.
+
+	@param gfrlRequest A pre-initialized GetFilteredRecordListRequest object.
+
+	&lt;pre&gt;&amp;#09;
+		var gfrlRequest = com.leicabio.mirthlib.dataserver.GetFilteredRecordList.ceateRequest( $(&apos;token&apos;), &quot;Slide&quot; );&lt;br /&gt;&amp;#09;
+		gfrlRequest.addFilter( &quot;ExternalId&quot;, &quot;=&quot;, &quot;ABC-123&quot; );&lt;br /&gt;&amp;#09;
+		gfrlRequest.setColumnList( [ &quot;Id&quot; ] );
+	&lt;/pre&gt;
+	@return An array of integers as the primary key result set.&lt;br /&gt;&lt;br /&gt;
+	An empty return array (ids.length == 0) indicates an error occured.&lt;br /&gt;
+	A return array with one item == 0 (ID_NULL) indicates a record was not returned according to input filter constraints.
+ */
+function lookupEntityIds( gfrlRequest )
+{
+	var ids      = [];
+	var LOGSTAMP = &quot;[lookupEntityIds] &quot;;
+
+	logger.debug( LOGSTAMP + gfrlRequest.logLine() );
+
+	var dsClient = new DataServerClient( gfrlRequest.toString(), gfrlRequest.methodName );
+	var dsResult = dsClient.doRequest();
+
+	if ( 0 == dsResult )
+	{
+		var gfrlResponse = com.leicabio.mirthlib.dataserver.Method.GetFilteredRecordList.createResponse( dsClient.responseXml );
+		if ( 0 &lt; gfrlResponse.totalRecordCount )
+		{
+			var idColumn = ( &quot;Image&quot; == gfrlRequest.getTableName() ) ? &quot;ImageId&quot; : &quot;Id&quot;;
+
+			do
+				ids.push( parseInt( gfrlResponse.getColumnValue( idColumn ) ) );
+			while ( true == gfrlResponse.moveNext() );
+
+			logger.debug( LOGSTAMP + &quot;The GET request returned the ID array [&quot; + ids.toString() + &quot;].&quot; );
+		}
+		else
+		{
+			ids.push( $cfg(&apos;ID_NULL&apos;) );
+			logger.debug( LOGSTAMP + &quot;No ID array was returned for the GET request.&quot; );
+		}
+	}
+	else
+	{
+		var errMsg = LOGSTAMP;
+		if ( dsResult &lt; 0 )
+			errMsg += &quot;DataServer returned result code: &quot; + dsResult + &quot;. Message: &quot; + dsClient.errorMessage;
+		else
+			errMsg += &quot;Mirth channel router returned a status of &quot; + Status.values()[ dsResult ] + &quot;. Message: &quot; + dsClient.errorMessage;
+		logger.error( errMsg );
+	}
+	
+	return ids;
+}</code>
+            </properties>
+          </codeTemplate>
+          <codeTemplate version="3.8.1">
+            <id>8e951c74-8c7e-4e58-8aa6-b06ae9864adb</id>
+            <name>makePrdRequest</name>
+            <revision>1</revision>
+            <lastModified>
+              <time>1626372666666</time>
+              <timezone>America/New_York</timezone>
+            </lastModified>
+            <contextSet>
+              <delegate>
+                <contextType>GLOBAL_POSTPROCESSOR</contextType>
+                <contextType>GLOBAL_DEPLOY</contextType>
+                <contextType>GLOBAL_PREPROCESSOR</contextType>
+                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+                <contextType>SOURCE_RECEIVER</contextType>
+                <contextType>CHANNEL_BATCH</contextType>
+                <contextType>CHANNEL_PREPROCESSOR</contextType>
+                <contextType>CHANNEL_UNDEPLOY</contextType>
+                <contextType>CHANNEL_DEPLOY</contextType>
+                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+                <contextType>CHANNEL_ATTACHMENT</contextType>
+                <contextType>CHANNEL_POSTPROCESSOR</contextType>
+                <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+                <contextType>GLOBAL_UNDEPLOY</contextType>
+                <contextType>DESTINATION_DISPATCHER</contextType>
+              </delegate>
+            </contextSet>
+            <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
+              <type>FUNCTION</type>
+              <code>/**
+	This function builds the PutRecordDataRequest object for an entity (Case, Specimen, Slide, etc.).&lt;p&gt;
+	&lt;b&gt;Example:&lt;/b&gt;
+	&lt;pre&gt;
+	{@code &lt;Case&gt;
+	  &lt;Fields&gt;
+	    &lt;Field name=&quot;ExternalId&quot;&gt;ABC-123&lt;/Field&gt;
+	  &lt;/Fields&gt;
+	&lt;/Case&gt;}
+	&lt;/pre&gt;
+	@param xEntityNode - The XML string representing the record to insert (example above).
+	@param parentTableName - The name of the entity&apos;s parent table. Set to null if the entity is at the top level.
+	@param parentId - The primary key of the parent record to assign the entity. Set this to null if the entity is at the top level.
+	@return A constructed PutRecordDataRequest class instance.
+ */
+function makePrdRequest( xEntityNode, parentTableName, parentId )
+{
+	// Extract the entity&apos;s table name
+	var xName = xEntityNode.name();
+	var tableName = ( &quot;RootEntity&quot; == xName.localName ) ? xEntityNode.@tableName.toString() : xName.localName;
+	
+	var prdRequest = com.leicabio.mirthlib.dataserver.Method.PutRecordData.createRequest( $g(&apos;ESM_TOKEN&apos;), tableName );
+
+	prdRequest.setId( xEntityNode.@id );
+	for ( var i = 0; i &lt; xEntityNode.Fields.Field.length(); i++ )
+	{
+		var fld = xEntityNode.Fields.Field[ i ];
+		prdRequest.addField( fld.@name, fld.toString() );
+	}
+	
+	if ( null !== parentTableName &amp;&amp; null !== parentId )
+	{
+		prdRequest.addField( &apos;ParentTable&apos;, parentTableName );
+		prdRequest.addField( &apos;ParentId&apos;, parentId );	
+	}
+
+	return prdRequest;
+}</code>
+            </properties>
+          </codeTemplate>
+          <codeTemplate version="3.8.1">
+            <id>9e9e8968-6330-4246-a61e-4d6da88492c8</id>
+            <name>PutAnnotations2</name>
+            <revision>1</revision>
+            <lastModified>
+              <time>1626372666634</time>
+              <timezone>America/New_York</timezone>
+            </lastModified>
+            <contextSet>
+              <delegate>
+                <contextType>GLOBAL_POSTPROCESSOR</contextType>
+                <contextType>GLOBAL_DEPLOY</contextType>
+                <contextType>GLOBAL_PREPROCESSOR</contextType>
+                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+                <contextType>SOURCE_RECEIVER</contextType>
+                <contextType>CHANNEL_BATCH</contextType>
+                <contextType>CHANNEL_PREPROCESSOR</contextType>
+                <contextType>CHANNEL_UNDEPLOY</contextType>
+                <contextType>CHANNEL_DEPLOY</contextType>
+                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+                <contextType>CHANNEL_ATTACHMENT</contextType>
+                <contextType>CHANNEL_POSTPROCESSOR</contextType>
+                <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+                <contextType>GLOBAL_UNDEPLOY</contextType>
+                <contextType>DESTINATION_DISPATCHER</contextType>
+              </delegate>
+            </contextSet>
+            <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
+              <type>FUNCTION</type>
+              <code>/**
+	DataServer Method : PutAnnotations2 - Response wrapper
+*/
+/*
+
+Typical SOAP response schema from the PutRecordData method: 
+
+&lt;soap:Envelope xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; 
+               xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; 
+               xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;&#xd;
+    &lt;soap:Header/&gt;&#xd;
+    &lt;soap:Body&gt;&#xd;
+        &lt;PutAnnotations2Response xmlns=&quot;http://www.aperio.com/webservices/&quot;&gt;&#xd;
+            &lt;PutAnnotations2Result&gt;&#xd;
+                &lt;ASResult&gt;0&lt;/ASResult&gt;&#xd;
+                &lt;ASMessage/&gt;&#xd;
+            &lt;/PutAnnotations2Result&gt;&#xd;
+            &lt;Id&gt;1&lt;/Id&gt;&#xd;
+        &lt;/PutAnnotations2Response&gt;&#xd;
+    &lt;/soap:Body&gt;&#xd;
+&lt;/soap:Envelope&gt;&#xd;
+
+*/
+
+// The class constructor.
+function PutAnnotations2Response( soapResponse )
+{
+	var genericResponse = com.leicabio.mirthlib.dataserver.Method.PutRecordData.createResponse( soapResponse );
+
+	this.resultCode    = genericResponse.getResultCode();
+	this.resultMessage = genericResponse.getResultMessage();
+
+	this.responseBody  = new XML( genericResponse.getBody() );
+}
+
+PutAnnotations2Response.prototype.getId = function()
+{
+	return parseInt( this.responseBody.Id.toString() );
+};</code>
+            </properties>
+          </codeTemplate>
+          <codeTemplate version="3.8.1">
+            <id>f3fe3345-09de-4916-93da-fbb8a8d7a56a</id>
+            <name>RecordHookArguments</name>
+            <revision>1</revision>
+            <lastModified>
+              <time>1626372666846</time>
+              <timezone>America/New_York</timezone>
+            </lastModified>
+            <contextSet>
+              <delegate>
+                <contextType>GLOBAL_POSTPROCESSOR</contextType>
+                <contextType>GLOBAL_DEPLOY</contextType>
+                <contextType>GLOBAL_PREPROCESSOR</contextType>
+                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+                <contextType>SOURCE_RECEIVER</contextType>
+                <contextType>CHANNEL_BATCH</contextType>
+                <contextType>CHANNEL_PREPROCESSOR</contextType>
+                <contextType>CHANNEL_UNDEPLOY</contextType>
+                <contextType>CHANNEL_DEPLOY</contextType>
+                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+                <contextType>CHANNEL_ATTACHMENT</contextType>
+                <contextType>CHANNEL_POSTPROCESSOR</contextType>
+                <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+                <contextType>GLOBAL_UNDEPLOY</contextType>
+                <contextType>DESTINATION_DISPATCHER</contextType>
+              </delegate>
+            </contextSet>
+            <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
+              <type>FUNCTION</type>
+              <code>/***********************************************************************************
+	DataServer Hook : RecordHook - Message Wrapper
+
+	
+Typical XML schema from the RecordHook trigger (example from Image record): 
+
+&lt;RecordHookArguments xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+                     xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; 
+                     xmlns=&quot;http://www.aperio.com/webservices/&quot;&gt;
+    &lt;Token&gt;############&lt;/Token&gt;
+    &lt;UserId&gt;3&lt;/UserId&gt; 
+    &lt;HookName&gt;ImageRecordHook&lt;/HookName&gt; 
+    &lt;ModifiedColumns&gt;
+        &lt;Column&gt;CompressedFileLocation&lt;/Column&gt; 
+    &lt;/ModifiedColumns&gt;
+    &lt;RowState&gt;Modified&lt;/RowState&gt; 
+    &lt;TableName&gt;Image&lt;/TableName&gt; 
+    &lt;Data&gt;
+        &lt;DataRow&gt;
+            &lt;ImageId&gt;297&lt;/ImageId&gt; 
+            &lt;ScanDate&gt;2011-12-09 13:54:40&lt;/ScanDate&gt; 
+            &lt;ScanScopeId&gt;SS1590&lt;/ScanScopeId&gt; 
+            &lt;CreatedBy&gt;03a1d14c-f690-4566-8c79-81bdae01aecb&lt;/CreatedBy&gt; 
+            &lt;Description&gt;ER&lt;/Description&gt; 
+            &lt;CompressedFileLocation&gt;\\fmneo-aperio1\Images\2011-12-09\105034.svs&lt;/CompressedFileLocation&gt; 
+            &lt;BarcodeId&gt;105034&lt;/BarcodeId&gt; 
+            &lt;Rack&gt;7&lt;/Rack&gt; 
+            &lt;Slot&gt;15&lt;/Slot&gt; 
+            &lt;TWidth&gt;42.46&lt;/TWidth&gt; 
+            &lt;THeight&gt;22.37&lt;/THeight&gt; 
+            &lt;ScanStatus&gt;Success&lt;/ScanStatus&gt; 
+            &lt;RunTime&gt;00:07:22.625&lt;/RunTime&gt; 
+            &lt;QualityFactor&gt;86&lt;/QualityFactor&gt; 
+            &lt;ParentId&gt;259&lt;/ParentId&gt; 
+            &lt;ParentTable&gt;Slide&lt;/ParentTable&gt; 
+            &lt;DataGroupId&gt;1&lt;/DataGroupId&gt; 
+            &lt;ImageGUID&gt;-4149150219354885600&lt;/ImageGUID&gt; 
+            &lt;ImageTypeId&gt;1&lt;/ImageTypeId&gt; 
+            &lt;NotMovable&gt;0&lt;/NotMovable&gt; 
+            &lt;ScanTimeZone&gt;-500&lt;/ScanTimeZone&gt; 
+        &lt;/DataRow&gt;
+    &lt;/Data&gt;
+&lt;/RecordHookArguments&gt;
+***********************************************************************************/
+
+var aperioNs = $cfg(&apos;eSM_ResponseNs&apos;);
+
+///////////////////////
+// Class Constructor //
+///////////////////////
+
+function RecordHookArguments( hookMessage )
+{
+	this.messageXml = new XML( hookMessage );
+	
+	this.Token      = this.messageXml.aperioNs::Token;
+	this.UserId     = this.messageXml.aperioNs::UserId;
+	this.HookName   = this.messageXml.aperioNs::HookName;
+	this.TableName  = this.messageXml.aperioNs::TableName;
+	this.RowState   = this.messageXml.aperioNs::RowState;
+    
+    // Build the array of ModifiedColumns.
+    this.ModifiedColumns = [];
+  
+    var clms = this.messageXml.aperioNs::ModifiedColumns.aperioNs::Column;
+    for ( var i = 0; i &lt; clms.length(); i++ )
+    {
+        this.ModifiedColumns[ i ] = clms[ i ].toString();
+    }
+    
+    // Build the DataRow object with name-value pairs. 
+    this.DataRow = [];
+    
+    var flds = this.messageXml.aperioNs::Data.aperioNs::DataRow;
+    
+    for ( var i = 0; i &lt; flds.length(); i++ )
+    {
+        var info = flds[ i ].name();
+        this.DataRow[ info.localName ] = flds[ i ].toString();
+    }
+}
+
+/*
+ * Ask for a field from the DataRow by fieldName - get the value
+ * back as a string.
+ * RecordHooks appear to only report non-null, non-empty fields.
+ * So, if an empty string is returned, the field is null or empty.
+ */
+RecordHookArguments.prototype.getColumnValue = function( fieldName )
+{
+	var clmVal = &quot;&quot;;
+	
+    if ( typeof ( this.DataRow[ fieldName ] ) !== &quot;undefined&quot; )
+        clmVal = this.DataRow[ fieldName ];
+    
+	return clmVal;
+};
+
+
+/*
+ * Returns &apos;true&apos; if the fieldName argument string is found in the
+ * ModifiedColumns array. Otherwise, &apos;false&apos;.
+ */
+RecordHookArguments.prototype.isModifiedColumn = function( fieldName )
+{
+	var isMod = false;
+	
+    for ( var i = 0; i &lt; this.ModifiedColumns.length; i++ )
+    {
+		isMod = ( fieldName == this.ModifiedColumns[ i ] )
+		if ( isMod )
+			break;
+	}
+    
+	return isMod;
+};</code>
+            </properties>
+          </codeTemplate>
+          <codeTemplate version="3.8.1">
+            <id>efd5ede7-3ece-46b7-bab4-e19c06006656</id>
+            <name>RegionRectangle</name>
+            <revision>1</revision>
+            <lastModified>
+              <time>1626372666760</time>
+              <timezone>America/New_York</timezone>
+            </lastModified>
+            <contextSet>
+              <delegate>
+                <contextType>GLOBAL_POSTPROCESSOR</contextType>
+                <contextType>GLOBAL_DEPLOY</contextType>
+                <contextType>GLOBAL_PREPROCESSOR</contextType>
+                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+                <contextType>SOURCE_RECEIVER</contextType>
+                <contextType>CHANNEL_BATCH</contextType>
+                <contextType>CHANNEL_PREPROCESSOR</contextType>
+                <contextType>CHANNEL_UNDEPLOY</contextType>
+                <contextType>CHANNEL_DEPLOY</contextType>
+                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+                <contextType>CHANNEL_ATTACHMENT</contextType>
+                <contextType>CHANNEL_POSTPROCESSOR</contextType>
+                <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+                <contextType>GLOBAL_UNDEPLOY</contextType>
+                <contextType>DESTINATION_DISPATCHER</contextType>
+              </delegate>
+            </contextSet>
+            <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
+              <type>FUNCTION</type>
+              <code>/**
+	Encapsulates the rectangular region plotted at the viewer.
+	&lt;pre&gt;
+	{@code &lt;Vertices&gt;
+		&lt;Vertex X=&quot;19422.333388&quot; Y=&quot;28448.888908&quot; /&gt;
+		&lt;Vertex X=&quot;20311.222304&quot; Y=&quot;28448.888908&quot; /&gt;
+		&lt;Vertex X=&quot;20311.222304&quot; Y=&quot;29115.555595&quot; /&gt;
+		&lt;Vertex X=&quot;19422.333388&quot; Y=&quot;29115.555595&quot; /&gt;
+	&lt;/Vertices&gt;}
+	&lt;/pre&gt;
+	@param verticesNode An E4X node from the Vertices element in the incoming message (example above).
+	@param zoom The zoom factor. Zoom factor is applied to all properties getting the x, y, width and height.
+ */
+function RegionRectangle( verticesNode, zoom )
+{
+	var xVertices = new XML( verticesNode );
+
+	this.VRTX_COUNT = 4;
+	
+	this.arrX = new Array( this.VRTX_COUNT );
+	this.arrY = new Array( this.VRTX_COUNT );
+
+	for ( var i = 0; i &lt; this.VRTX_COUNT; i++ )
+	{
+		this.arrX[ i ] = parseFloat( xVertices.Vertex[i].@X );
+		this.arrY[ i ] = parseFloat( xVertices.Vertex[i].@Y );
+	}
+
+	this.zoom = parseFloat( zoom );
+}
+
+function numberorder( a, b ) { return a - b }
+
+RegionRectangle.prototype.X = function()
+{
+	// Make copy of instance&apos;s arrX
+	xArr = this.arrX.slice();
+	// sort arrX and get least value (first element)
+	xArr.sort( numberorder );
+	// Apply the zoom factor
+	var xOut = xArr[ 0 ] * this.zoom;
+
+	return xOut.toFixed( 0 );
+};
+
+
+RegionRectangle.prototype.Y = function()
+{
+	// Make copy of instance&apos;s arrY
+	yArr = this.arrY.slice();
+	// sort arrY and get least value (first element)
+	yArr.sort( numberorder );
+	// Apply the zoom factor
+	var yOut = yArr[ 0 ] * this.zoom;
+
+	return yOut.toFixed( 0 );
+};
+
+
+RegionRectangle.prototype.Width = function()
+{
+	// Make copy of instance&apos;s arrX
+	xArr = this.arrX.slice();
+	// sort arrX and get least value (first element)
+	xArr.sort( numberorder );
+
+	var xDelta = xArr[ this.VRTX_COUNT - 1 ] - xArr[ 0 ];
+	var width = xDelta * this.zoom;
+
+	return width.toFixed( 0 );
+};
+
+
+RegionRectangle.prototype.Height = function()
+{
+	// Make copy of instance&apos;s arrY
+	yArr = this.arrY.slice();
+	// sort local yArr
+	yArr.sort( numberorder );
+
+	var yDelta = yArr[ this.VRTX_COUNT - 1 ] - yArr[ 0 ];
+	var height = yDelta * this.zoom;
+
+	return ( height.toFixed( 0 ) );
+};</code>
+            </properties>
+          </codeTemplate>
+          <codeTemplate version="3.8.1">
+            <id>61bdd4ea-ef23-406e-a2a3-0c31087719a2</id>
+            <name>setCaseMessageIds</name>
+            <revision>1</revision>
+            <lastModified>
+              <time>1626372666534</time>
+              <timezone>America/New_York</timezone>
+            </lastModified>
+            <contextSet>
+              <delegate>
+                <contextType>GLOBAL_POSTPROCESSOR</contextType>
+                <contextType>GLOBAL_DEPLOY</contextType>
+                <contextType>GLOBAL_PREPROCESSOR</contextType>
+                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+                <contextType>SOURCE_RECEIVER</contextType>
+                <contextType>CHANNEL_BATCH</contextType>
+                <contextType>CHANNEL_PREPROCESSOR</contextType>
+                <contextType>CHANNEL_UNDEPLOY</contextType>
+                <contextType>CHANNEL_DEPLOY</contextType>
+                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+                <contextType>CHANNEL_ATTACHMENT</contextType>
+                <contextType>CHANNEL_POSTPROCESSOR</contextType>
+                <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+                <contextType>GLOBAL_UNDEPLOY</contextType>
+                <contextType>DESTINATION_DISPATCHER</contextType>
+              </delegate>
+            </contextSet>
+            <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
+              <type>FUNCTION</type>
+              <code>/**
+	Updates the entity IDs in an incoming transformed case message XML.
+&lt;pre&gt;
+	{@code &lt;RootEntity tableName=&quot;Case&quot; id=&quot;-1&quot;&gt; Update @id to 0 or &gt;0
+	  &lt;OrderControl&gt;NW&lt;/OrderControl&gt;
+	  &lt;Fields externalKey=&quot;ExternalId&quot;&gt;
+	    &lt;Field name=&quot;ExternalId&quot; /&gt;&#xd;
+	    &lt;Field name=&quot;ColumnX&quot; /&gt;&#xd;
+	  &lt;/Fields&gt;
+	  
+	  &lt;Specimens&gt;
+	    &lt;Specimen id=&quot;-1&quot;&gt; Update @id to 0 or &gt;0
+	      &lt;Fields externalKey=&quot;AccessionNumber&quot;&gt;
+	        &lt;Field name=&quot;AccessionNumber&quot; /&gt;
+	      &lt;/Fields&gt;
+	      
+	      &lt;Slides&gt;
+	        &lt;Slide id=&quot;-1&quot;&gt; Update @id to 0 or &gt;0
+	          &lt;Fields externalKey=&quot;BarcodeId&quot;&gt;
+	            &lt;Field name=&quot;BarcodeId&quot; /&gt;
+	          &lt;/Fields&gt;
+	        &lt;/Slide&gt;
+	      &lt;/Slides&gt;
+	      	
+	    &lt;/Specimen&gt;
+	  &lt;/Specimens&gt;
+	  
+	&lt;/RootEntity&gt;}
+&lt;/pre&gt;	
+	@param inTransformXml - The XML string representing the transformed Case document to update with IDs (example above).
+	@return The transform XML string with the id attributes updated.  
+ */
+
+function setCaseMessageIds( inTransformXml )
+{
+	var rawXform = new XML( inTransformXml );
+
+	var entKeyFld = rawXform.Fields.@externalKey;
+	var entKeyVal = rawXform.Fields.*.(@name == entKeyFld).toString();
+
+	// Build the Case GFRL object
+	var getIdRqst = com.leicabio.mirthlib.dataserver.Method.GetFilteredRecordList.createRequest( $g(&apos;ESM_TOKEN&apos;), &quot;Case&quot; );
+	getIdRqst.addFilter( entKeyFld, &quot;=&quot;, entKeyVal );
+	getIdRqst.setColumnList( [ &quot;Id&quot; ] );
+
+	var retIds = lookupEntityIds( getIdRqst );
+
+	if ( 0 == retIds.length )
+		return inTransformXml; // Connection failure. Return original input. 
+	 
+	var caseId = &apos;0&apos;;
+	if ( null != retIds[ 0 ] )
+		caseId = retIds[ 0 ];
+
+	rawXform.@id = caseId;
+
+	if ( rawXform.Specimens.length() &gt; 0 )
+	{
+		for ( var iSpc = 0; iSpc &lt; rawXform.Specimens.Specimen.length(); iSpc++ )
+		{
+
+			entKeyFld = rawXform.Specimens.Specimen[ iSpc ].Fields.@externalKey;
+			entKeyVal = rawXform.Specimens.Specimen[ iSpc ].Fields.*.(@name == entKeyFld).toString();
+	
+			// Build the Specimen GFRL object
+			getIdRqst = com.leicabio.mirthlib.dataserver.Method.GetFilteredRecordList.createRequest( $g(&apos;ESM_TOKEN&apos;), &quot;Specimen&quot; );
+			getIdRqst.addFilter( entKeyFld, &quot;=&quot;, entKeyVal );
+			getIdRqst.setColumnList( [ &quot;Id&quot; ] );
+	
+			retIds = lookupEntityIds( getIdRqst );
+			var specId = &apos;0&apos;;
+			if ( null != retIds[ 0 ] )
+				specId = retIds[ 0 ];
+		
+			rawXform.Specimens.Specimen[ iSpc ].@id = specId;
+	
+			if ( rawXform.Specimens.Specimen[ iSpc ].Slides.Slide.length() &gt; 0 )
+			{
+				for ( var iSld = 0; iSld &lt; rawXform.Specimens.Specimen[ iSpc ].Slides.Slide.length(); iSld++ )
+				{
+					var slide = rawXform.Specimens.Specimen[ iSpc ].Slides.Slide[ iSld ];
+					entKeyFld = slide.Fields.@externalKey;
+					entKeyVal = slide.Fields.*.(@name == entKeyFld).toString();
+	
+					// Build the Slide GFRL object
+					getIdRqst = com.leicabio.mirthlib.dataserver.Method.GetFilteredRecordList.createRequest( $g(&apos;ESM_TOKEN&apos;), &quot;Slide&quot; );
+					getIdRqst.addFilter( entKeyFld, &quot;=&quot;, entKeyVal );
+					getIdRqst.setColumnList( [ &quot;Id&quot; ] );
+	
+					retIds = lookupEntityIds( getIdRqst );
+					var slideId = &apos;0&apos;;
+					if ( null != retIds[ 0 ] )
+						slideId = retIds[ 0 ];
+	
+					slide.@id = slideId;
+				}
+			}
+		}
+	}
+	return rawXform;
+}</code>
+            </properties>
+          </codeTemplate>
+        </codeTemplates>
+      </codeTemplateLibrary>
+      <codeTemplateLibrary version="3.8.1">
+        <id>2ed7d706-c8fe-41b5-ac96-79b121b9cfe9</id>
+        <name>ImageServer</name>
+        <revision>1</revision>
+        <lastModified>
+          <time>1626372666380</time>
+          <timezone>America/New_York</timezone>
+        </lastModified>
+        <description>Classes and methods for executing transactions with ImageServer</description>
+        <includeNewChannels>true</includeNewChannels>
+        <enabledChannelIds>
+          <string>58ae4e28-44eb-42fd-bc02-2dcd769965ed</string>
+          <string>67ec4e5d-befe-4387-b532-b294fd72f31a</string>
+          <string>b15ef323-0f2f-42e7-921d-689edb352ef1</string>
+          <string>4c3229f4-08a8-4d1c-9305-eac7603c561</string>
+          <string>35ae5099-edce-4214-b709-99c9060e2392</string>
+          <string>dbf5ad02-b695-4512-aae4-a39e24103dfe</string>
+          <string>193eae5c-334a-4835-a84b-ffae6e64361d</string>
+        </enabledChannelIds>
+        <disabledChannelIds>
+          <string>b5409196-2798-4ef0-9c33-7e9b7232066b</string>
+        </disabledChannelIds>
+        <codeTemplates>
+          <codeTemplate version="3.8.1">
+            <id>5cced05a-02c7-4b17-89a3-34e214e97df3</id>
+            <name>generateICompImage</name>
+            <revision>1</revision>
+            <lastModified>
+              <time>1626372666797</time>
+              <timezone>America/New_York</timezone>
+            </lastModified>
+            <contextSet>
+              <delegate>
+                <contextType>GLOBAL_POSTPROCESSOR</contextType>
+                <contextType>GLOBAL_DEPLOY</contextType>
+                <contextType>GLOBAL_PREPROCESSOR</contextType>
+                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+                <contextType>SOURCE_RECEIVER</contextType>
+                <contextType>CHANNEL_BATCH</contextType>
+                <contextType>CHANNEL_PREPROCESSOR</contextType>
+                <contextType>CHANNEL_UNDEPLOY</contextType>
+                <contextType>CHANNEL_DEPLOY</contextType>
+                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+                <contextType>CHANNEL_ATTACHMENT</contextType>
+                <contextType>CHANNEL_POSTPROCESSOR</contextType>
+                <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+                <contextType>GLOBAL_UNDEPLOY</contextType>
+                <contextType>DESTINATION_DISPATCHER</contextType>
+              </delegate>
+            </contextSet>
+            <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
+              <type>FUNCTION</type>
+              <code>/**
+	Output a thumbnail using icomp
+*/
+// Compression type codes:
+// 0=TIF/none
+// 1=TIF/LZW
+// 2=SVS/JPG
+// 3=SVS/J2K
+// 5=SVS/J2K-KDU
+// 8=JPEG
+// 10=CWS
+// 12=JP2
+
+function generateICompImage(icompPath, imageFilePath, outputPath, x, y, width, height, zoom, compression, additionalArgs) {
+
+	// Build command line with switched parameters
+	var cmd_0 = &apos;\&quot;&apos; + icompPath + &apos;\&quot; \&quot;&apos; + imageFilePath + &apos;\&quot; \&quot;&apos; +  outputPath + &apos;\&quot;&apos;;
+	var cmd_1 = &apos; -il&apos; + x + 
+				&apos; -it&apos; + y + 
+				&apos; -iw&apos; + width + 
+				&apos; -ih&apos; + height + 
+				&apos; -ow&apos; + ( parseInt( width ) * parseFloat( zoom ) ) + 
+				&apos; -oh&apos; + ( parseInt( height ) * parseFloat( zoom ) ) + 
+				&apos; -z&apos; + zoom + 
+				&apos; -c&apos; + compression + 
+				&apos; -t0&apos; + additionalArgs;
+
+	var fullCmd = cmd_0 + cmd_1;
+	logger.debug( &quot;Executing shell command - &quot; + fullCmd.toString() );
+	if ( !( new java.io.File( outputPath ).isFile() ) ) 
+	{
+		var proc = java.lang.Runtime.getRuntime().exec( fullCmd.toString() );
+		$gc( &apos;is&apos;, proc.getInputStream());
+		var thread = new java.lang.Thread( new java.lang.Runnable( { run:function() {
+			while ( $gc(&apos;is&apos;).read() != -1 );
+		}}));
+		thread.start();
+		while( proc.getErrorStream().read() != -1 );
+		thread.join();
+		proc.waitFor();
+
+	} 
+
+}</code>
+            </properties>
+          </codeTemplate>
+          <codeTemplate version="3.8.1">
+            <id>3ad8db84-39ba-4cea-ada7-c58853203543</id>
+            <name>GetImageInfo</name>
+            <revision>1</revision>
+            <lastModified>
+              <time>1626372666903</time>
+              <timezone>America/New_York</timezone>
+            </lastModified>
+            <contextSet>
+              <delegate>
+                <contextType>GLOBAL_POSTPROCESSOR</contextType>
+                <contextType>GLOBAL_DEPLOY</contextType>
+                <contextType>GLOBAL_PREPROCESSOR</contextType>
+                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+                <contextType>SOURCE_RECEIVER</contextType>
+                <contextType>CHANNEL_BATCH</contextType>
+                <contextType>CHANNEL_PREPROCESSOR</contextType>
+                <contextType>CHANNEL_UNDEPLOY</contextType>
+                <contextType>CHANNEL_DEPLOY</contextType>
+                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+                <contextType>CHANNEL_ATTACHMENT</contextType>
+                <contextType>CHANNEL_POSTPROCESSOR</contextType>
+                <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+                <contextType>GLOBAL_UNDEPLOY</contextType>
+                <contextType>DESTINATION_DISPATCHER</contextType>
+              </delegate>
+            </contextSet>
+            <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
+              <type>FUNCTION</type>
+              <code>/*****************************************************************************
+	ImageServer Method : XINFO - Request and response wrappers
+
+	
+
+&lt;xinfo&gt;
+	&lt;getthumb/&gt;
+	&lt;getlabel quality=&quot;80&quot;/&gt;
+	&lt;getmacro quality=&quot;70&quot;/&gt;
+	&lt;getprofile/&gt;
+	&lt;commonlevels/&gt;
+&lt;/xinfo&gt;
+
+******************************************************************************/
+
+function GetImageInfoRequest()
+{
+	this.xRequest = &lt;xinfo&gt;&lt;commonlevels /&gt;&lt;/xinfo&gt;;
+}
+
+
+/*
+ * Appends the &lt;getthumb /&gt; switch element.
+ */
+GetImageInfoRequest.prototype.setGetThumbnail = function( quality, isEncrypted )
+{
+	var qualityAtt = &quot;70&quot;;
+
+	if ( typeof( quality ) !== &quot;undefined&quot; )
+		if ( 0 &lt; quality.length() &amp;&amp; 0 &lt; parseInt( quality ) )
+			qualityAtt = quality.toString();
+
+	this.xRequest.getthumb.@quality = qualityAtt;
+
+	if ( typeof( isEncrypted ) !== &quot;undefined&quot; )
+		if ( isEncrypted.toString().toUpperCase() === &quot;TRUE&quot; )
+			this.xRequest.getthumb.@crypt = &quot;IDEA&quot;;
+};
+
+
+/*
+ * Appends the &lt;getmacro /&gt; switch element.
+ */
+GetImageInfoRequest.prototype.setGetMacro = function( quality, isEncrypted )
+{
+	var qualityAtt = &quot;70&quot;;
+
+	if ( typeof( quality ) !== &quot;undefined&quot; )
+		if ( 0 &lt; quality.length() &amp;&amp; 0 &lt; parseInt( quality ) )
+			qualityAtt = quality.toString();
+
+	this.xRequest.getmacro.@quality = qualityAtt;
+
+	if ( typeof( isEncrypted ) !== &quot;undefined&quot; )
+		if ( isEncrypted.toString().toUpperCase() === &quot;TRUE&quot; )
+			this.xRequest.getmacro.@crypt = &quot;IDEA&quot;;
+};
+
+
+/*
+ * Appends the &lt;getlabel /&gt; switch element.
+ */
+GetImageInfoRequest.prototype.setGetLabel = function( quality, isEncrypted )
+{
+	var qualityAtt = &quot;70&quot;;
+
+	if ( typeof( quality ) !== &quot;undefined&quot; )
+		if ( 0 &lt; quality.length() &amp;&amp; 0 &lt; parseInt( quality ) )
+			qualityAtt = quality.toString();
+
+	this.xRequest.getlabel.@quality = qualityAtt;
+
+	if ( typeof( isEncrypted ) !== &quot;undefined&quot; )
+		if ( isEncrypted.toString().toUpperCase() === &quot;TRUE&quot; )
+			this.xRequest.getlabel.@crypt = &quot;IDEA&quot;;
+};
+
+/*
+ * Appends the &lt;getprofile /&gt; switch element.
+ */
+GetImageInfoRequest.prototype.setGetProfile = function()
+{
+	this.xRequest.appendChild( &lt;getprofile /&gt; );
+};
+
+
+/*
+ * Returns the XML string built in this class.
+ * Since the string will be used in an HTTP URI, escape the reserved characters. 
+ */
+GetImageInfoRequest.prototype.toString = function()
+{
+	return ( encodeURIComponent( this.xRequest.toString() ) );
+};
+
+
+/********************************************************************
+
+&lt;xinfo&gt;
+    &lt;version&gt;12.1.3 W32 Dec 13 2013 13:17:49&lt;/version&gt;
+    &lt;bitsPerSampl&gt;8&lt;/bitsPerSampl&gt;
+    &lt;acqBitsPerSampl&gt;8&lt;/acqBitsPerSampl&gt;
+    &lt;samplPerPix&gt;3&lt;/samplPerPix&gt;
+    &lt;capturetype&gt;0&lt;/capturetype&gt;
+    &lt;width&gt;4000&lt;/width&gt;
+    &lt;height&gt;3000&lt;/height&gt;
+    &lt;depth&gt;1&lt;/depth&gt;
+    &lt;tilewidth&gt;240&lt;/tilewidth&gt;
+    &lt;tileheight&gt;240&lt;/tileheight&gt;
+    &lt;title/&gt;
+    &lt;description&gt;
+        Aperio Image Library v9.1.4 49188x20032 [21504,4820 4000x3000] (240x240) J2K/MIL Q=80;Aperio Image Library v9.0.22 51000x20182 [0,150 49188x20032] (240x240) 
+        J2K/MIL Q=70|AppMag = 20|StripeWidth = 1000|ScanScope ID = SS1203|Filename = 1481|Title = none|Date = 02/28/08|Time = 18:52:32|User = 
+        f38d7c8b-10ed-477d-aa58-1e304a7c5daa|MPP = 0.5040|Left = 24.904408|Top = 17.041132|LineCameraSkew = -0.000865|LineAreaXOffset = 0.000000|LineAreaYOffset = 
+        0.000000|DSR ID = ss1203|ImageID = 1481|OriginalWidth = 51000|Originalheight = 20182|OriginalWidth = 49188|Originalheight = 20032|ICC Profile = ScanScope v1
+    &lt;/description&gt;
+    &lt;filesize&gt;3736791&lt;/filesize&gt;
+    &lt;imagesize&gt;36000000&lt;/imagesize&gt;
+    &lt;comptype&gt;3&lt;/comptype&gt;
+    &lt;comptypedesc&gt;SVS/JPEG2000&lt;/comptypedesc&gt;
+    &lt;compquality&gt;80&lt;/compquality&gt;
+    &lt;compcodec&gt;JPEG2000; MIL 8.0&lt;/compcodec&gt;
+    &lt;levels&gt;1&lt;/levels&gt;
+    &lt;level id=&quot;0&quot;&gt;
+        &lt;width&gt;4000&lt;/width&gt;
+        &lt;height&gt;3000&lt;/height&gt;
+        &lt;zoom&gt;1.000000&lt;/zoom&gt;
+        &lt;cdata /&gt;
+    &lt;/level&gt;
+    &lt;layers&gt;1&lt;/layers&gt;
+    &lt;layer id=&quot;0&quot;&gt;
+        &lt;zoff&gt;0&lt;/zoff&gt;
+        &lt;depth&gt;1&lt;/depth&gt;
+        &lt;focus&gt;0.000000&lt;/focus&gt;
+    &lt;/layer&gt;
+    &lt;thumb&gt;
+        &lt;width&gt;1024&lt;/width&gt;
+        &lt;height&gt;768&lt;/height&gt;
+        &lt;zoom&gt;3.906250&lt;/zoom&gt;
+    &lt;/thumb&gt;
+    &lt;macro&gt;
+        &lt;width&gt;1280&lt;/width&gt;
+        &lt;height&gt;431&lt;/height&gt;
+    &lt;/macro&gt;
+    &lt;label&gt;
+        &lt;width&gt;466&lt;/width&gt;
+        &lt;height&gt;448&lt;/height&gt;
+    &lt;/label&gt;
+    &lt;profile&gt;
+        &lt;length&gt;141992&lt;/length&gt;
+    &lt;/profile&gt;
+&lt;/xinfo&gt;
+****************************************************************/
+
+///////////////////////
+// Class Constructor //
+///////////////////////
+
+function GetImageInfoResponse( soapResponse )
+{
+	this.responseXml = new XML( soapResponse );
+    
+	this.version         = this.responseXml.version.toString();
+	this.bitsPerSampl    = parseInt( this.responseXml.bitsPerSampl );
+	this.acqBitsPerSampl = parseInt( this.responseXml.acqBitsPerSampl );
+	this.samplPerPix     = parseInt( this.responseXml.samplPerPix );
+	this.capturetype     = parseInt( this.responseXml.capturetype );
+	this.width           = parseInt( this.responseXml.width );
+	this.height          = parseInt( this.responseXml.height );
+	this.depth           = parseInt( this.responseXml.depth );
+	this.tilewidth       = parseInt( this.responseXml.tilewidth );
+	this.tileheight      = parseInt( this.responseXml.tileheight );
+	this.title           = this.responseXml.title.toString();
+	this.filesize        = parseInt( this.responseXml.filesize );
+	this.imagesize       = parseInt( this.responseXml.imagesize );
+	this.comptype        = parseInt( this.responseXml.comptype );
+	this.comptypedesc    = this.responseXml.comptypedesc.toString();
+	this.compquality     = parseInt( this.responseXml.compquality );
+	this.compcodec       = this.responseXml.compcodec.toString();
+
+    var desc             = this.responseXml.description.toString();
+    
+    if ( desc.length &gt; 0 )
+    {
+        arrDesc = desc.split( &quot;|&quot; );
+        if ( 1 &lt; arrDesc.length )
+        {
+            // Parse into sub-fields
+            this.description = new Object();
+            this.description.header = arrDesc[ 0 ];
+            for ( var i = 1; i &lt; arrDesc.length; i++ )
+            {
+                var nvp = arrDesc[ i ].split( &quot; = &quot; );
+                this.description[ nvp[ 0 ].replace( &quot; &quot;, &quot;&quot; ) ] = nvp[ 1 ];
+            }
+        }
+        else
+        {
+            this.description = arrDesc[ 0 ];
+		}
+    }
+    else
+	{
+        this.description = &quot;&quot;;
+	}    
+
+    // Handle layers and levels collections
+	this.levels          = parseInt( this.responseXml.levels );
+	this.layers          = parseInt( this.responseXml.layers );
+    
+    this.layerIdx        = 0;
+    this.levelIdx        = 0;
+    
+    
+    // Handle the sub-images (label, thumbnail, macro).
+    this.label = new Object();
+    this.label.width  = parseInt( this.responseXml.label.width );
+    this.label.height = parseInt( this.responseXml.label.height );
+    this.label.image  = this.responseXml.label.image.toString();
+    
+    this.macro = new Object();
+    this.macro.width  = parseInt( this.responseXml.macro.width );
+    this.macro.height = parseInt( this.responseXml.macro.height );
+    this.macro.image  = this.responseXml.macro.image.toString();
+    
+    this.thumb = new Object();
+    this.thumb.width  = parseInt( this.responseXml.thumb.width );
+    this.thumb.height = parseInt( this.responseXml.thumb.height );
+    this.thumb.zoom   = parseFloat( this.responseXml.thumb.height );
+    this.thumb.image  = this.responseXml.thumb.image.toString();
+    
+    this.profile = new Object();
+    this.profile.length  = parseInt( this.responseXml.profile.length );
+    this.profile.data    = this.responseXml.profile.data.toString();
+}
+
+
+
+
+/*
+ * Handle the layer collection (as in a z-stack).
+ */
+GetImageInfoResponse.prototype.moveFirstLayer = function()
+{
+	this.layerIdx = 0;
+};
+GetImageInfoResponse.prototype.moveNextLayer = function()
+{
+	this.layerIdx++;
+	return ( this.layerIdx &lt; this.layers );
+};
+
+GetImageInfoResponse.prototype.getLayer_id = function()
+{
+    return  parseInt( this.responseXml.layer[ this.layerIdx ].@id );
+};
+GetImageInfoResponse.prototype.getLayer_zoff = function()
+{
+    return  parseInt( this.responseXml.layer[ this.layerIdx ].zoff );
+};
+GetImageInfoResponse.prototype.getLayer_depth = function()
+{
+    return  parseInt( this.responseXml.layer[ this.layerIdx ].depth );
+};
+GetImageInfoResponse.prototype.getLayer_focus = function()
+{
+    return  parseFloat( this.responseXml.layer[ this.layerIdx ].focus );
+};
+
+
+/*
+ * Handle the level collection (typically only one level).
+ */
+GetImageInfoResponse.prototype.moveFirstLevel = function()
+{
+	this.levelIdx = 0;
+};
+GetImageInfoResponse.prototype.moveFirstLevel = function()
+{
+	this.levelIdx++;
+	return ( this.levelIdx &lt; this.levels );
+};
+
+GetImageInfoResponse.prototype.getLevel_width = function()
+{
+    return  parseInt( this.responseXml.level[ this.levelIdx ].width );
+};
+GetImageInfoResponse.prototype.getLevel_height = function()
+{
+    return  parseInt( this.responseXml.level[ this.levelIdx ].height );
+};
+GetImageInfoResponse.prototype.getLevel_zoom = function()
+{
+    return  parseFloat( this.responseXml.level[ this.levelIdx ].zoom );
+};
+GetImageInfoResponse.prototype.getLevel_cdata = function()
+{
+    return  this.responseXml.level[ this.levelIdx ].cdata.toString();
+};</code>
+            </properties>
+          </codeTemplate>
+        </codeTemplates>
+      </codeTemplateLibrary>
+      <codeTemplateLibrary version="3.8.1">
+        <id>242f5e70-0b63-4461-8358-a36836366eb2</id>
+        <name>Utilities</name>
+        <revision>1</revision>
+        <lastModified>
+          <time>1626372666386</time>
+          <timezone>America/New_York</timezone>
+        </lastModified>
+        <description>General functions for operations across the Mirth Connect deployment.</description>
+        <includeNewChannels>true</includeNewChannels>
+        <enabledChannelIds>
+          <string>1a6a792d-4cf1-48d1-9814-a29e56f5a048</string>
+          <string>11fdd2e3-6bca-4fb5-9e71-40b7a716c0c0</string>
+          <string>37eb4481-1352-46fc-95b5-abace62d92a8</string>
+          <string>c45a1220-62c3-4eaa-ad93-1364f07a440f</string>
+          <string>979578d2-e623-4b37-9f7e-6cfa249b3427</string>
+          <string>35ae5099-edce-4214-b709-99c9060e2392</string>
+          <string>dbf5ad02-b695-4512-aae4-a39e24103dfe</string>
+          <string>fb627dc6-2e0e-419e-a918-4485f33a5c77</string>
+          <string>58ae4e28-44eb-42fd-bc02-2dcd769965ed</string>
+          <string>67ec4e5d-befe-4387-b532-b294fd72f31a</string>
+          <string>b15ef323-0f2f-42e7-921d-689edb352ef1</string>
+          <string>4c3229f4-08a8-4d1c-9305-eac7603c561</string>
+          <string>b5409196-2798-4ef0-9c33-7e9b7232066b</string>
+          <string>193eae5c-334a-4835-a84b-ffae6e64361d</string>
+          <string>0ef573c8-13c4-4c35-bdc6-44b7b35566ef</string>
+        </enabledChannelIds>
+        <disabledChannelIds/>
+        <codeTemplates>
+          <codeTemplate version="3.8.1">
+            <id>feceaece-a049-4ca5-9205-135663e9f54c</id>
+            <name>base64_decode</name>
+            <revision>1</revision>
+            <lastModified>
+              <time>1626372666506</time>
+              <timezone>America/New_York</timezone>
+            </lastModified>
+            <contextSet>
+              <delegate>
+                <contextType>GLOBAL_POSTPROCESSOR</contextType>
+                <contextType>GLOBAL_DEPLOY</contextType>
+                <contextType>GLOBAL_PREPROCESSOR</contextType>
+                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+                <contextType>SOURCE_RECEIVER</contextType>
+                <contextType>CHANNEL_BATCH</contextType>
+                <contextType>CHANNEL_PREPROCESSOR</contextType>
+                <contextType>CHANNEL_UNDEPLOY</contextType>
+                <contextType>CHANNEL_DEPLOY</contextType>
+                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+                <contextType>CHANNEL_ATTACHMENT</contextType>
+                <contextType>CHANNEL_POSTPROCESSOR</contextType>
+                <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+                <contextType>GLOBAL_UNDEPLOY</contextType>
+                <contextType>DESTINATION_DISPATCHER</contextType>
+              </delegate>
+            </contextSet>
+            <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
+              <type>FUNCTION</type>
+              <code>/**
+	A base64 decoder for byte arrays. Mirth&apos;s native method only works for character strings.
+
+	@param data - The base64-encoded value.
+	@param asByteArray - Boolean signalling if the value encoded in data is a byte array, not a string.
+	@return The decoded result.
+*/
+
+//  discuss at: http://phpjs.org/functions/base64_decode/
+// original by: Tyler Akins (http://rumkin.com)
+// improved by: Thunder.m
+// improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+// improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+//    input by: Aman Gupta
+//    input by: Brett Zamir (http://brett-zamir.me)
+// bugfixed by: Onno Marsman
+// bugfixed by: Pellentesque Malesuada
+// bugfixed by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+//   example 1: base64_decode(&apos;S2V2aW4gdmFuIFpvbm5ldmVsZA==&apos;);
+//   returns 1: &apos;Kevin van Zonneveld&apos;
+//   example 2: base64_decode(&apos;YQ===&apos;);
+//   returns 2: &apos;a&apos;
+
+// extended by: Tiff Kramer
+//              Added asByteArr argument to return for non-string-
+//              encoded input (compressed array of doubles).
+
+function base64_decode( data, asByteArray )
+{
+	var b64 = &apos;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=&apos;;
+	var o1, o2, o3, 
+	    h1, h2, h3, h4, bits,
+	    i = 0,
+	    ac = 0,
+	    dec = &apos;&apos;,
+	    tmp_arr = [],
+		asBytArr = false;
+
+	if ( !data )
+		return data;
+
+	if ( typeof( asByteArray ) !== &quot;undefined&quot; )
+		if ( asByteArray.toString().toUpperCase() === &quot;TRUE&quot; )
+			asBytArr = true;
+
+	data += &apos;&apos;;
+
+	do
+	{ // unpack four hexets into three octets using index points in b64
+		h1 = b64.indexOf( data.charAt( i++ ) );
+		h2 = b64.indexOf( data.charAt( i++ ) );
+		h3 = b64.indexOf( data.charAt( i++ ) );
+		h4 = b64.indexOf( data.charAt( i++ ) );
+
+		bits = h1 &lt;&lt; 18 | h2 &lt;&lt; 12 | h3 &lt;&lt; 6 | h4;
+
+		o1 = bits &gt;&gt; 16 &amp; 0xff;
+		o2 = bits &gt;&gt; 8 &amp; 0xff;
+		o3 = bits &amp; 0xff;
+
+		if ( h3 == 64 )
+		{
+			if ( !asBytArr )
+				tmp_arr[ac++] = String.fromCharCode(o1);
+			else
+				tmp_arr[ac++] = o1;
+		}
+		else if ( h4 == 64 )
+		{
+			if ( !asBytArr )
+				tmp_arr[ac++] = String.fromCharCode( o1, o2 );
+			else
+			{
+				tmp_arr[ac++] = o1;
+				tmp_arr[ac++] = o2;
+			}
+		}
+		else
+		{	
+			if ( !asBytArr )
+				tmp_arr[ac++] = String.fromCharCode( o1, o2, o3 );
+			else
+			{
+				tmp_arr[ac++] = o1;
+				tmp_arr[ac++] = o2;
+				tmp_arr[ac++] = o3;
+			}
+		}
+	}
+	while ( i &lt; data.length );
+
+	if ( asBytArr )
+		return tmp_arr;
+
+	dec = tmp_arr.join( &apos;&apos; );
+	return dec.replace( /\0+$/, &apos;&apos; );
+}</code>
+            </properties>
+          </codeTemplate>
+          <codeTemplate version="3.8.1">
+            <id>219151ba-a998-44f4-bfbb-34046d5a2dbf</id>
+            <name>bytesToDouble</name>
+            <revision>1</revision>
+            <lastModified>
+              <time>1626372667068</time>
+              <timezone>America/New_York</timezone>
+            </lastModified>
+            <contextSet>
+              <delegate>
+                <contextType>GLOBAL_POSTPROCESSOR</contextType>
+                <contextType>GLOBAL_DEPLOY</contextType>
+                <contextType>GLOBAL_PREPROCESSOR</contextType>
+                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+                <contextType>SOURCE_RECEIVER</contextType>
+                <contextType>CHANNEL_BATCH</contextType>
+                <contextType>CHANNEL_PREPROCESSOR</contextType>
+                <contextType>CHANNEL_UNDEPLOY</contextType>
+                <contextType>CHANNEL_DEPLOY</contextType>
+                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+                <contextType>CHANNEL_ATTACHMENT</contextType>
+                <contextType>CHANNEL_POSTPROCESSOR</contextType>
+                <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+                <contextType>GLOBAL_UNDEPLOY</contextType>
+                <contextType>DESTINATION_DISPATCHER</contextType>
+              </delegate>
+            </contextSet>
+            <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
+              <type>FUNCTION</type>
+              <code>function bytesToDouble( str, start )
+{
+	start *= 8;
+	var data = [ str.charCodeAt( start + 7 ),
+	             str.charCodeAt( start + 6 ),
+	             str.charCodeAt( start + 5 ),
+	             str.charCodeAt( start + 4 ),
+	             str.charCodeAt( start + 3 ),
+	             str.charCodeAt( start + 2 ),
+	             str.charCodeAt( start + 1 ),
+	             str.charCodeAt( start + 0 ) ];
+
+	var sign = ( data[ 0 ] &amp; 1 &lt;&lt; 7 ) &gt;&gt; 7;
+
+	var exponent = ( ( ( data[ 0 ] &amp; 127 ) &lt;&lt; 4 ) | ( data[ 1 ] &amp; ( 15 &lt;&lt; 4 ) ) &gt;&gt; 4 );
+
+	if ( exponent == 0 )
+		return 0;
+
+	if ( exponent == 0x7ff )
+		return ( sign ) ? Number.POSITIVE_INFINITY : Number.NEGATIVE_INFINITY;
+
+	var mul = Math.pow( 2, exponent - 1023 - 52 );
+	var mantissa = data[ 7 ] +
+	               data[ 6 ] * Math.pow( 2, 8 * 1 ) +
+	               data[ 5 ] * Math.pow( 2, 8 * 2 ) +
+	               data[ 4 ] * Math.pow( 2, 8 * 3 ) +
+	               data[ 3 ] * Math.pow( 2, 8 * 4 ) +
+	               data[ 2 ] * Math.pow( 2, 8 * 5 ) +
+	               ( data[ 1 ] &amp; 15 ) * Math.pow( 2, 8 * 6 ) +
+	               Math.pow( 2, 52 );
+
+	return Math.pow( -1, sign ) * mantissa * mul;
+}</code>
+            </properties>
+          </codeTemplate>
+          <codeTemplate version="3.8.1">
+            <id>5ce9deac-ef7c-4345-a166-c49d6c462adb</id>
+            <name>getControlId</name>
+            <revision>1</revision>
+            <lastModified>
+              <time>1626372666394</time>
+              <timezone>America/New_York</timezone>
+            </lastModified>
+            <contextSet>
+              <delegate>
+                <contextType>GLOBAL_POSTPROCESSOR</contextType>
+                <contextType>GLOBAL_DEPLOY</contextType>
+                <contextType>GLOBAL_PREPROCESSOR</contextType>
+                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+                <contextType>SOURCE_RECEIVER</contextType>
+                <contextType>CHANNEL_BATCH</contextType>
+                <contextType>CHANNEL_PREPROCESSOR</contextType>
+                <contextType>CHANNEL_UNDEPLOY</contextType>
+                <contextType>CHANNEL_DEPLOY</contextType>
+                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+                <contextType>CHANNEL_ATTACHMENT</contextType>
+                <contextType>CHANNEL_POSTPROCESSOR</contextType>
+                <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+                <contextType>GLOBAL_UNDEPLOY</contextType>
+                <contextType>DESTINATION_DISPATCHER</contextType>
+              </delegate>
+            </contextSet>
+            <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
+              <type>FUNCTION</type>
+              <code>/**
+	Returns a Message Control ID for populating HL7 message headers (MSH-10)
+
+ 	@return A timestamp string
+ */
+function getControlId()
+{
+	var d = new Date();
+	return d.getTime();
+}</code>
+            </properties>
+          </codeTemplate>
+          <codeTemplate version="3.8.1">
+            <id>b7a09460-f298-4526-bed5-a61fc00f004f</id>
+            <name>overwriteCategories</name>
+            <revision>1</revision>
+            <lastModified>
+              <time>1626372666431</time>
+              <timezone>America/New_York</timezone>
+            </lastModified>
+            <contextSet>
+              <delegate>
+                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+                <contextType>GLOBAL_POSTPROCESSOR</contextType>
+                <contextType>CHANNEL_ATTACHMENT</contextType>
+                <contextType>CHANNEL_POSTPROCESSOR</contextType>
+                <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+                <contextType>DESTINATION_DISPATCHER</contextType>
+                <contextType>SOURCE_RECEIVER</contextType>
+                <contextType>CHANNEL_BATCH</contextType>
+                <contextType>CHANNEL_PREPROCESSOR</contextType>
+                <contextType>CHANNEL_UNDEPLOY</contextType>
+                <contextType>CHANNEL_DEPLOY</contextType>
+              </delegate>
+            </contextSet>
+            <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
+              <type>FUNCTION</type>
+              <code>/**
+	This function replaces the generic logger output categories with a channel-specified prefix.
+
+	NOTE: This will work automatically for all channel contexts except for
+	the transformer. For transformers, you will need to manually
+	include &quot;overwriteCategories();&quot; at the beginning of your first step.
+ */
+
+function overwriteCategories()
+{
+	var channelName = ChannelUtil.getDeployedChannelName( channelId );
+
+	var arrReplace = {
+			&apos;transformer&apos;:   channelName + &apos; -transformer&apos;,
+			&apos;preprocessor&apos;:  channelName + &apos; -preprocessor&apos;,
+			&apos;postprocessor&apos;: channelName + &apos; -postprocessor&apos;,
+			&apos;deploy&apos;:        channelName + &apos; -deploy&apos;,
+			&apos;shutdown&apos;:      channelName + &apos; -shutdown&apos;,
+			&apos;filter&apos;:	       channelName + &apos; -filter&apos;,
+			&apos;db-connector&apos;:  channelName + &apos; -db-connector&apos;,
+			&apos;js-connector&apos;:  channelName + &apos; -js-connector&apos;,
+			&apos;attachment&apos;:    channelName + &apos; -attachment&apos;,
+			&apos;batch&apos;:         channelName + &apos; -batch&apos;,
+			&apos;response&apos;:      channelName + &apos; -response&apos;
+	}
+	logger = org.apache.log4j.Logger.getLogger( arrReplace[ logger.getName() ] );
+	logger.setLevel( org.apache.log4j.Level.DEBUG );
+}
+
+overwriteCategories();</code>
+            </properties>
+          </codeTemplate>
+        </codeTemplates>
+      </codeTemplateLibrary>
+    </codeTemplateLibraries>
+  </exportData>
+</channel>
